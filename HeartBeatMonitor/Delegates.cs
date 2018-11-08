@@ -13,5 +13,6 @@ namespace HeartBeatMonitor
         /// </summary>
         /// <param name="results"> list of data fetched from the file</param>
         public delegate void ReadContentsCallback(List<string[]> results);
+        public delegate void ConfigurationLoadedCallback(Dictionary<string, string> data);
     }
 }

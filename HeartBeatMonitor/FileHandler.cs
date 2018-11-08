@@ -10,7 +10,7 @@ namespace HeartBeatMonitor
 {
 
     /// <summary>
-    /// Get data dump with thread
+    /// Fetches and manipulates the realtime data dump.
     /// </summary>
     class FileHandler
     {
@@ -18,6 +18,7 @@ namespace HeartBeatMonitor
         private string fileName;
 
         private ReadContentsCallback callback;
+        private ConfigurationLoadedCallback confCallback;
 
         public FileHandler(string fileName, ReadContentsCallback callback)
         {
@@ -25,48 +26,112 @@ namespace HeartBeatMonitor
             this.callback = callback;
         }
 
+        public FileHandler(string fileName, ConfigurationLoadedCallback confCallback)
+        {
+            this.fileName = fileName;
+            this.confCallback = confCallback;
+        }
+
+        public void FetchParameters()
+        {
+            var config = new Dictionary<string, string>();
+            bool fileExists = File.Exists(@fileName);
+
+            if (!fileExists)
+            {
+                // file doesn't exist, no point in continuing 
+                confCallback(config);
+            }
+
+            bool startAppending = false;
+            string line;
+            StreamReader file = new StreamReader(fileName);
+            try
+            {
+                while ((line = file.ReadLine()) != null)
+                {
+                    if (!startAppending)
+                    {
+                        startAppending = line.Equals("[Params]") ? true : false;
+                        continue;
+                    }
+
+                    if (string.IsNullOrEmpty(line) || string.IsNullOrWhiteSpace(line))
+                    {
+
+                        // finished loading configuration
+                        break;
+                    }
+
+                    if (startAppending)
+                    {
+                        string[] temp = line.Split('=');
+                        config.Add(temp[0], temp[1]);
+                    }
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+            finally
+            {
+                if (file != null)
+                {
+                    file.Close();
+                }
+
+                confCallback(config);
+            }
+        }
+
         /// <summary>
-        /// 
+        /// Get realtime data dumped from the monitor
         /// </summary>
         public void FetchHrmData()
         {
             List<string[]> result = new List<string[]>();
-            bool fileExists = File.Exists(fileName);
+            bool fileExists = File.Exists(@fileName);
 
-            if (fileExists)
+            if (!fileExists)
             {
-                bool startAppending = false;
-                string line = " ";
-                try
+                // file doesn't exist, no point in continuing 
+                callback(result);
+            }
+
+            bool startAppending = false;
+            string line;
+            StreamReader file = new StreamReader(fileName);
+            try
+            {
+                while ((line = file.ReadLine()) != null)
                 {
-                    Console.WriteLine("Fetching started from file.");
-                    StreamReader file = new StreamReader(fileName);
-                    while ((line = file.ReadLine()) != null)
+                    if (!startAppending)
                     {
-
-                        if (!startAppending)
-                        {
-
-                            startAppending = line.Equals("[HRData]") ? true : false;
-                            continue;
-                        }
-
-                        if (startAppending)
-                        {
-                            string[] temp = line.Split('\t');
-                            result.Add(temp);
-                        }
+                        startAppending = line.Equals("[HRData]") ? true : false;
+                        continue;
                     }
-                    file.Close();
-                    callback(result);
-                    Console.WriteLine("Finished fetching data from file.");
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    callback(result);
+
+                    if (startAppending)
+                    {
+                        string[] temp = line.Split('\t');
+                        result.Add(temp);
+                    }
                 }
             }
-        }
+            catch (IndexOutOfRangeException)
+            {
 
+            }
+            finally
+            {
+                if (file != null)
+                {
+                    file.Close();
+                }
+
+                callback(result);
+            }
+        }
     }
 }
