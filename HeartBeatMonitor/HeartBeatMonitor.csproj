@@ -52,8 +52,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculator.cs" />
     <Compile Include="DataModel.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="DumpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DumpForm.Designer.cs">
+      <DependentUpon>DumpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileHandler.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="MainForm.cs">
@@ -64,6 +71,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DumpForm.resx">
+      <DependentUpon>DumpForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

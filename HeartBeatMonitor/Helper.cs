@@ -9,6 +9,32 @@ namespace HeartBeatMonitor
     class Helper
     {
 
+        /// <summary>
+        /// Helps identify the version of device from the provided length of SMode.
+        /// </summary>
+        /// <param name="value"> value extracted from the SMode field of configuration</param>
+        /// <returns> version number based on the provided SMode value</returns>
+        public static int IdentifySmodeType(string value)
+        {
+            int length = value.Length;
+            if (length == 3)
+            {
+                return 105;
+            } else if(length > 3 && length <= 8)
+            {
+                return 106;
+            } else if (length == 9)
+            {
+                return 107;
+            }
+            return 105;
+        }
+
+        /// <summary>
+        /// Get device's actual name based on the Monitor code saved in the configuration file.
+        /// </summary>
+        /// <param name="identifier"> model code from the configuration</param>
+        /// <returns> name of the device used to dump the realtime data</returns>
         public static string GetDeviceName(int identifier)
         {
             string result = null;

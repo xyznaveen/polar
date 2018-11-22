@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZedGraph;
 using static HeartBeatMonitor.Delegates;
 
 namespace HeartBeatMonitor
@@ -85,17 +86,13 @@ namespace HeartBeatMonitor
 
         public void ConfigurationLoadedCallbackImpl(Dictionary<string, string> data)
         {
-            foreach (var pair in data)
-            {
-                Console.WriteLine(pair.Key + " = " + pair.Value);
-            }
-            
-            if(versionValue.InvokeRequired)
+            if (versionValue.InvokeRequired)
             {
                 versionValue.BeginInvoke((MethodInvoker)delegate () { versionValue.Text = data["Version"].Trim(); });
-            } else
+            }
+            else
             {
-                versionValue.Text = data["Version"].Trim(); 
+                versionValue.Text = data["Version"].Trim();
             }
             if (dateValue.InvokeRequired)
             {
@@ -105,7 +102,7 @@ namespace HeartBeatMonitor
             {
                 dateValue.Text = data["Date"].Trim();
             }
-            if (startTimeValue.InvokeRequired) 
+            if (startTimeValue.InvokeRequired)
             {
                 startTimeValue.BeginInvoke((MethodInvoker)delegate () { startTimeValue.Text = data["StartTime"].Trim(); });
             }
@@ -121,15 +118,15 @@ namespace HeartBeatMonitor
             {
                 intervalValue.Text = data["Interval"].Trim();
             }
-            if (weightValue.InvokeRequired) 
+            if (weightValue.InvokeRequired)
             {
                 weightValue.BeginInvoke((MethodInvoker)delegate () { weightValue.Text = data["Weight"].Trim(); });
             }
             else
             {
-                weightValue.Text = data["Weight"].Trim(); 
+                weightValue.Text = data["Weight"].Trim();
             }
-            if (lengthValue.InvokeRequired) 
+            if (lengthValue.InvokeRequired)
             {
                 lengthValue.BeginInvoke((MethodInvoker)delegate () { lengthValue.Text = data["Length"].Trim(); });
             }
@@ -137,21 +134,83 @@ namespace HeartBeatMonitor
             {
                 lengthValue.Text = data["Length"].Trim();
             }
-            if (dataTable.InvokeRequired)
-            {
-                dataTable.BeginInvoke((MethodInvoker)delegate () { dataTable.Columns[dataTable.Columns.Count - 1].Visible = false; });
-            }
-            else
-            {
-                dataTable.Columns[dataTable.Columns.Count - 1].Visible = false;
-            }
             if (infoBox.InvokeRequired)
-            {                
+            {
                 infoBox.BeginInvoke((MethodInvoker)delegate () { infoBox.Text = Helper.GetDeviceName(int.Parse(data["Monitor"])); });
             }
             else
             {
                 infoBox.Text = Helper.GetDeviceName(int.Parse(data["Monitor"]));
+            }
+
+            ShowOrHideColumns(Helper.IdentifySmodeType(data["SMode"]));
+
+            Calculator calc = new Calculator(strCmp);
+
+            double avgSpeed = Math.Round(calc.GetAverageSpeed(1), 2, MidpointRounding.AwayFromZero);
+            if (averageSpeed.InvokeRequired)
+            {
+                averageSpeed.BeginInvoke((MethodInvoker)delegate () { averageSpeed.Text = avgSpeed.ToString(); });
+            }
+            else
+            {
+                averageSpeed.Text = avgSpeed.ToString();
+            }
+
+            double maxSpeed = calc.GetMaxSpeed(1);
+            if (maximumSpeed.InvokeRequired)
+            {
+                maximumSpeed.BeginInvoke((MethodInvoker)delegate () { maximumSpeed.Text = maxSpeed.ToString(); });
+            }
+            else
+            {
+                maximumSpeed.Text = maxSpeed.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Toggle columns from 
+        /// </summary>
+        private void ShowOrHideColumns(int version)
+        {
+            
+            switch (version)
+            {
+                case 105:
+                    {
+                        HideColumns(3);
+                        break;
+                    }
+                case 106:
+                    {
+
+                        HideColumns(7);
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
+        private void HideColumns(int startIndex)
+        {
+            
+            foreach (DataGridViewColumn item in dataTable.Columns)
+            {
+                if(item.Index < startIndex)
+                {
+                    // we do not want to hide columns before the start index
+                    continue;
+                }
+
+                if (dataTable.InvokeRequired)
+                {
+                    dataTable.BeginInvoke((MethodInvoker)delegate () { item.Visible = false; });
+                }
+                else
+                {
+                    item.Visible = false;
+                }
             }
         }
 
@@ -167,7 +226,7 @@ namespace HeartBeatMonitor
             {
                 if (results.Count > 0)
                 {
-                    Console.WriteLine("TOtal number of objects are : " + dataTable.Rows.Count);
+                    Console.WriteLine("Total number of objects are : " + dataTable.Rows.Count);
                     dataTable.Rows.Clear();
                     strCmp = results;
                     fetchDataBackground.WorkerReportsProgress = true;
@@ -216,6 +275,67 @@ namespace HeartBeatMonitor
         {
             string[] str = e.UserState as string[];
             dataTable.Rows.Add(str[0], str[1], str[2], str[3], str[4]);
+        }
+
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            switch (e.TabPageIndex)
+            {
+                case 0:
+
+                    break;
+                case 1:
+                    if (strCmp != null && strCmp.Count > 0) {
+                        ShowGraph();
+                    }
+                    break;
+                default:
+
+                    break;
+            }
+        }
+
+        public void ShowGraph()
+        {
+            GraphPane graphPane = zedGraphControl1.GraphPane;
+            graphPane.Title = "HeartRateAndSpeed";
+            graphPane.XAxis.Title = "Heart Rate";
+            graphPane.YAxis.Title = "Speed";
+            graphPane.MinBarGap = 100F;
+
+            PointPairList firstPair = new PointPairList();
+            PointPairList secondPair = new PointPairList();
+            PointPairList thirdPair = new PointPairList();
+            PointPairList fourthPair = new PointPairList();
+            PointPairList fifthPair = new PointPairList();
+            PointPairList sixthPair = new PointPairList();
+
+            for (int i = 0; i < strCmp.Count; i++)
+            {
+                    firstPair.Add(i, double.Parse(strCmp[i][0]));
+                    secondPair.Add(i, double.Parse(strCmp[i][1]));
+                    thirdPair.Add(i, double.Parse(strCmp[i][2]));
+                    fourthPair.Add(i, double.Parse(strCmp[i][3]));
+                    fifthPair.Add(i, double.Parse(strCmp[i][4]));
+            }
+
+            LineItem lineCurve = graphPane.AddCurve("Heart Rate", firstPair, Color.Blue, SymbolType.None);
+            LineItem lineCurve2 = graphPane.AddCurve("Speed", secondPair, Color.Red, SymbolType.None);
+            LineItem lineCurve3 = graphPane.AddCurve("Speed", thirdPair, Color.Green, SymbolType.None);
+            LineItem lineCurve4 = graphPane.AddCurve("Speed", fourthPair, Color.Aqua, SymbolType.None);
+            LineItem lineCurve5 = graphPane.AddCurve("Speed", fifthPair, Color.Purple, SymbolType.None);
+
+            zedGraphControl1.AxisChange();
+            graphPane.Legend.Position = ZedGraph.LegendPos.Bottom;
+
+            zedGraphControl1.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50); ;
+
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("CHANGED!");
         }
     }
 
