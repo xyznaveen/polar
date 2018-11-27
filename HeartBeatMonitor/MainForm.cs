@@ -17,6 +17,7 @@ namespace HeartBeatMonitor
     public partial class MainForm : Form
     {
         private const string OpenFileTitle = "Chose Input File";
+        public static bool newData = false;
 
         public MainForm()
         {
@@ -24,6 +25,9 @@ namespace HeartBeatMonitor
 
             // set Kilometer selected by default
             selectSpeedUnit.SelectedIndex = 0;
+            dataTable.Font = label11.Font;
+            tabPage2.AutoScroll = true;
+            dataTable.Columns[dataTable.ColumnCount - 1].Visible = false;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,6 +87,9 @@ namespace HeartBeatMonitor
         }
 
         private List<string[]> strCmp;
+        public double globMaxSpeed = 0;
+        public double globAvgSpeed = 0;
+        public double globTotalDistanceSpeed = 0;
 
         public void ConfigurationLoadedCallbackImpl(Dictionary<string, string> data)
         {
@@ -148,6 +155,7 @@ namespace HeartBeatMonitor
             Calculator calc = new Calculator(strCmp);
 
             double avgSpeed = Math.Round(calc.GetAverageSpeed(1), 2, MidpointRounding.AwayFromZero);
+            globAvgSpeed = avgSpeed;
             if (averageSpeed.InvokeRequired)
             {
                 averageSpeed.BeginInvoke((MethodInvoker)delegate () { averageSpeed.Text = avgSpeed.ToString(); });
@@ -158,6 +166,7 @@ namespace HeartBeatMonitor
             }
 
             double maxSpeed = calc.GetMaxSpeed(1);
+            globMaxSpeed = maxSpeed;
             if (maximumSpeed.InvokeRequired)
             {
                 maximumSpeed.BeginInvoke((MethodInvoker)delegate () { maximumSpeed.Text = maxSpeed.ToString(); });
@@ -165,6 +174,87 @@ namespace HeartBeatMonitor
             else
             {
                 maximumSpeed.Text = maxSpeed.ToString();
+            }
+
+            double avgPower = Calculator.Limit2Two(Calculator.GetAverage(strCmp, 4));
+            if (averagePower.InvokeRequired)
+            {
+                averagePower.BeginInvoke((MethodInvoker)delegate () { averagePower.Text = avgPower.ToString(); });
+            }
+            else
+            {
+                averagePower.Text = avgPower.ToString();
+            }
+
+            double dblMaxPower = Calculator.GetMax(strCmp, 4);
+            if (maxPower.InvokeRequired)
+            {
+                maxPower.BeginInvoke((MethodInvoker)delegate () { maxPower.Text = dblMaxPower.ToString(); });
+            }
+            else
+            {
+                maxPower.Text = dblMaxPower.ToString();
+            }
+
+            double dblAverageAltitude = Calculator.Limit2Two(Calculator.GetAverage(strCmp, 3));
+            if (averageAltitude.InvokeRequired)
+            {
+                averageAltitude.BeginInvoke((MethodInvoker)delegate () { averageAltitude.Text = dblAverageAltitude.ToString(); });
+            }
+            else
+            {
+                averageAltitude.Text = dblAverageAltitude.ToString();
+            }
+
+            double dblMaxAltitude = Calculator.GetMax(strCmp, 3);
+            if (maxAltitude.InvokeRequired)
+            {
+                maxAltitude.BeginInvoke((MethodInvoker)delegate () { maxAltitude.Text = dblMaxAltitude.ToString(); });
+            }
+            else
+            {
+                maxAltitude.Text = dblMaxAltitude.ToString();
+            }
+
+            double dblMaxHeartRate = Calculator.GetMax(strCmp, 0);
+            if (maxHeartRate.InvokeRequired)
+            {
+                maxHeartRate.BeginInvoke((MethodInvoker)delegate () { maxHeartRate.Text = dblMaxHeartRate.ToString(); });
+            }
+            else
+            {
+                maxHeartRate.Text = dblMaxHeartRate.ToString();
+            }
+
+            double dblAverageHeartRate = Calculator.Limit2Two(Calculator.GetAverage(strCmp, 0));
+            if (averageHeartRate.InvokeRequired)
+            {
+                averageHeartRate.BeginInvoke((MethodInvoker)delegate () { averageHeartRate.Text = dblAverageHeartRate.ToString(); });
+            }
+            else
+            {
+                averageHeartRate.Text = dblAverageHeartRate.ToString();
+            }
+
+            double dblMinHeartRate = Calculator.Limit2Two(Calculator.GetMin(strCmp, 0));
+            if (minHeartRate.InvokeRequired)
+            {
+                minHeartRate.BeginInvoke((MethodInvoker)delegate () { minHeartRate.Text = dblMinHeartRate.ToString(); });
+            }
+            else
+            {
+                minHeartRate.Text = dblMinHeartRate.ToString();
+            }
+
+            double dblTotalDistanceCovered = Calculator.GetSpeed(5, strCmp.Count, Calculator.GetAverage(strCmp, 1));
+            globTotalDistanceSpeed = dblTotalDistanceCovered;
+            if (totalDistanceCovered.InvokeRequired)
+            {
+                totalDistanceCovered.BeginInvoke((MethodInvoker)delegate () { totalDistanceCovered.Text = dblTotalDistanceCovered.ToString(); });
+            }
+            else
+            {
+                totalDistanceCovered.Text = dblTotalDistanceCovered.ToString();
             }
         }
 
@@ -178,13 +268,13 @@ namespace HeartBeatMonitor
             {
                 case 105:
                     {
-                        HideColumns(3);
+                        //HideColumns(3);
                         break;
                     }
                 case 106:
                     {
 
-                        HideColumns(7);
+                        //HideColumns(7);
                         break;
                     }
                 default:
@@ -274,7 +364,7 @@ namespace HeartBeatMonitor
         private void fetchDataBackground_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             string[] str = e.UserState as string[];
-            dataTable.Rows.Add(str[0], str[1], str[2], str[3], str[4]);
+            dataTable.Rows.Add(str[0], Calculator.Str2Double(str[1]), Calculator.Km2Mile(Calculator.Str2Double(str[1])), str[2], str[3], str[4]);
         }
 
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
@@ -289,6 +379,16 @@ namespace HeartBeatMonitor
                         ShowGraph();
                     }
                     break;
+                case 2:
+                    if (strCmp != null && strCmp.Count > 0)
+                    {
+                        ShowOne();
+                        ShowTwo();
+                        ShowThree();
+                        ShowFour();
+                        ShowFive();
+                    }
+                    break;
                 default:
 
                     break;
@@ -297,8 +397,13 @@ namespace HeartBeatMonitor
 
         public void ShowGraph()
         {
+
             GraphPane graphPane = zedGraphControl1.GraphPane;
-            graphPane.Title = "HeartRateAndSpeed";
+
+            // clear graph to start adding new items
+            graphPane.CurveList.Clear();
+
+            graphPane.Title = "Multi Graph";
             graphPane.XAxis.Title = "Heart Rate";
             graphPane.YAxis.Title = "Speed";
             graphPane.MinBarGap = 100F;
@@ -309,33 +414,176 @@ namespace HeartBeatMonitor
             PointPairList fourthPair = new PointPairList();
             PointPairList fifthPair = new PointPairList();
             PointPairList sixthPair = new PointPairList();
-
+            
             for (int i = 0; i < strCmp.Count; i++)
             {
-                    firstPair.Add(i, double.Parse(strCmp[i][0]));
-                    secondPair.Add(i, double.Parse(strCmp[i][1]));
-                    thirdPair.Add(i, double.Parse(strCmp[i][2]));
-                    fourthPair.Add(i, double.Parse(strCmp[i][3]));
-                    fifthPair.Add(i, double.Parse(strCmp[i][4]));
+                firstPair.Add(i, double.Parse(strCmp[i][0]));
+                secondPair.Add(i, double.Parse(strCmp[i][1]));
+                thirdPair.Add(i, double.Parse(strCmp[i][2]));
+                fourthPair.Add(i, double.Parse(strCmp[i][3]));
+                fifthPair.Add(i, double.Parse(strCmp[i][4]));
             }
 
             LineItem lineCurve = graphPane.AddCurve("Heart Rate", firstPair, Color.Blue, SymbolType.None);
             LineItem lineCurve2 = graphPane.AddCurve("Speed", secondPair, Color.Red, SymbolType.None);
-            LineItem lineCurve3 = graphPane.AddCurve("Speed", thirdPair, Color.Green, SymbolType.None);
-            LineItem lineCurve4 = graphPane.AddCurve("Speed", fourthPair, Color.Aqua, SymbolType.None);
-            LineItem lineCurve5 = graphPane.AddCurve("Speed", fifthPair, Color.Purple, SymbolType.None);
+            LineItem lineCurve3 = graphPane.AddCurve("Cadence", thirdPair, Color.Green, SymbolType.None);
+            LineItem lineCurve4 = graphPane.AddCurve("Altitude", fourthPair, Color.Aqua, SymbolType.None);
+            LineItem lineCurve5 = graphPane.AddCurve("Power", fifthPair, Color.Purple, SymbolType.None);
 
             zedGraphControl1.AxisChange();
+            zedGraphControl1.Size = new Size(500, 500);
             graphPane.Legend.Position = ZedGraph.LegendPos.Bottom;
-
-            zedGraphControl1.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50); ;
-
-
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        public void ShowOne()
         {
-            MessageBox.Show("CHANGED!");
+            GraphPane graphPane = zedGraphControl2.GraphPane;
+
+            // clear graph to start adding new items
+            graphPane.CurveList.Clear();
+
+            graphPane.Title = "Heart Rate";
+            graphPane.XAxis.Title = "Time";
+            graphPane.YAxis.Title = "Heart Rate";
+            graphPane.MinBarGap = 100F;
+
+            PointPairList firstPair = new PointPairList();
+
+            for (int i = 0; i < strCmp.Count; i++)
+            {
+                firstPair.Add(i, double.Parse(strCmp[i][0]));
+            }
+
+            LineItem lineCurve = graphPane.AddCurve("Heart Rate", firstPair, Color.Pink, SymbolType.None);
+
+            zedGraphControl2.AxisChange();
+        }
+
+        public void ShowTwo()
+        {
+            GraphPane graphPane = zedGraphControl3.GraphPane;
+
+            // clear graph to start adding new items
+            graphPane.CurveList.Clear();
+
+            graphPane.Title = "Speed";
+            graphPane.XAxis.Title = "Time";
+            graphPane.YAxis.Title = "Speed";
+            graphPane.MinBarGap = 100F;
+
+            PointPairList firstPair = new PointPairList();
+
+            for (int i = 0; i < strCmp.Count; i++)
+            {
+                firstPair.Add(i, double.Parse(strCmp[i][1]));
+            }
+
+            LineItem lineCurve = graphPane.AddCurve("Speed", firstPair, Color.Maroon, SymbolType.None);
+
+            zedGraphControl3.AxisChange();
+        }
+
+        public void ShowThree()
+        {
+            GraphPane graphPane = zedGraphControl4.GraphPane;
+
+            // clear graph to start adding new items
+            graphPane.CurveList.Clear();
+
+            graphPane.Title = "Cadence";
+            graphPane.XAxis.Title = "Time";
+            graphPane.YAxis.Title = "Cadence";
+            graphPane.MinBarGap = 100F;
+
+            PointPairList firstPair = new PointPairList();
+
+            for (int i = 0; i < strCmp.Count; i++)
+            {
+                firstPair.Add(i, double.Parse(strCmp[i][2]));
+            }
+
+            LineItem lineCurve = graphPane.AddCurve("Cadence", firstPair, Color.Orange, SymbolType.None);
+
+            zedGraphControl4.AxisChange();
+        }
+
+        public void ShowFour()
+        {
+            GraphPane graphPane = zedGraphControl5.GraphPane;
+
+            // clear graph to start adding new items
+            graphPane.CurveList.Clear();
+
+            graphPane.Title = "Altitude";
+            graphPane.XAxis.Title = "Time";
+            graphPane.YAxis.Title = "Altitude";
+            graphPane.MinBarGap = 100F;
+
+            PointPairList firstPair = new PointPairList();
+
+            for (int i = 0; i < strCmp.Count; i++)
+            {
+                firstPair.Add(i, double.Parse(strCmp[i][3]));
+            }
+
+            LineItem lineCurve = graphPane.AddCurve("Altitude", firstPair, Color.Gray, SymbolType.None);
+
+            zedGraphControl5.AxisChange();
+        }
+
+        public void ShowFive()
+        {
+            GraphPane graphPane = zedGraphControl6.GraphPane;
+
+            // clear graph to start adding new items
+            graphPane.CurveList.Clear();
+
+            graphPane.Title = "Power";
+            graphPane.XAxis.Title = "Time";
+            graphPane.YAxis.Title = "Power";
+            graphPane.MinBarGap = 100F;
+
+            PointPairList firstPair = new PointPairList();
+
+            for (int i = 0; i < strCmp.Count; i++)
+            {
+                firstPair.Add(i, double.Parse(strCmp[i][4]));
+            }
+
+            LineItem lineCurve = graphPane.AddCurve("Power", firstPair, Color.Red, SymbolType.None);
+
+            zedGraphControl6.AxisChange();
+        }
+
+        private void ClearGraphPane()
+        {
+
+            GraphPane gp = zedGraphControl1.GraphPane;
+        }
+
+        private void selectSpeedUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(selectSpeedUnit.SelectedIndex == 1) {
+                if (averageSpeed != null && maximumSpeed !=null)
+                {
+                    averageSpeed.Text = Calculator.Km2Mile(globAvgSpeed).ToString();
+                    maximumSpeed.Text = Calculator.Km2Mile(globMaxSpeed).ToString();
+                    totalDistanceCovered.Text = Calculator.Km2Mile(globTotalDistanceSpeed).ToString();
+                }
+
+                dataTable.Columns[1].Visible = false;
+                dataTable.Columns[2].Visible = true;
+                return;
+            }
+
+            dataTable.Columns[1].Visible = true;
+            dataTable.Columns[2].Visible = false;
+            if (averageSpeed != null && maximumSpeed != null)
+            {
+                averageSpeed.Text = Calculator.Mile2Km(double.Parse(averageSpeed.Text)).ToString();
+                maximumSpeed.Text = Calculator.Mile2Km(double.Parse(maximumSpeed.Text)).ToString();
+                totalDistanceCovered.Text = Calculator.Mile2Km(double.Parse(totalDistanceCovered.Text)).ToString();
+            }
         }
     }
 

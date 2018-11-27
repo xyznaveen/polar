@@ -28,37 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectHrmFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fetchDataBackground = new System.ComponentModel.BackgroundWorker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.maximumSpeed = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.averageSpeed = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.dataPanel = new System.Windows.Forms.Panel();
+            this.dataTable = new System.Windows.Forms.DataGridView();
             this.infoBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,41 +68,61 @@
             this.label3 = new System.Windows.Forms.Label();
             this.versionValue = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataPanel = new System.Windows.Forms.Panel();
-            this.dataTable = new System.Windows.Forms.DataGridView();
+            this.maxAltitude = new System.Windows.Forms.Label();
+            this.averageAltitude = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.maxPower = new System.Windows.Forms.Label();
+            this.averagePower = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.minHeartRate = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.maxHeartRate = new System.Windows.Forms.Label();
+            this.maximumSpeed = new System.Windows.Forms.Label();
+            this.averageHeartRate = new System.Windows.Forms.Label();
+            this.averageSpeed = new System.Windows.Forms.Label();
+            this.totalDistanceCovered = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.zedGraphControl6 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl5 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl4 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl3 = new ZedGraph.ZedGraphControl();
+            this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkboxContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.dataPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.infoBox.SuspendLayout();
             this.panel1.SuspendLayout();
             this.infoBoxPanel.SuspendLayout();
-            this.dataPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
-            this.checkboxContainer.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.moreToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1240, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1370, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -130,20 +141,6 @@
             this.selectHrmFile.Text = "Open";
             this.selectHrmFile.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // moreToolStripMenuItem
-            // 
-            this.moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.graphToolStripMenuItem});
-            this.moreToolStripMenuItem.Name = "moreToolStripMenuItem";
-            this.moreToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.moreToolStripMenuItem.Text = "More";
-            // 
-            // graphToolStripMenuItem
-            // 
-            this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
-            this.graphToolStripMenuItem.Text = "Graph";
-            // 
             // fetchDataBackground
             // 
             this.fetchDataBackground.DoWork += new System.ComponentModel.DoWorkEventHandler(this.fetchDataBackground_DoWork);
@@ -153,11 +150,12 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1240, 593);
+            this.tabControl1.Size = new System.Drawing.Size(1370, 725);
             this.tabControl1.TabIndex = 26;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
@@ -167,52 +165,36 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1232, 567);
+            this.tabPage1.Size = new System.Drawing.Size(1362, 699);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dashboard";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.checkboxContainer);
-            this.tabPage2.Controls.Add(this.zedGraphControl1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1232, 567);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Graph";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // zedGraphControl1
-            // 
-            this.zedGraphControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.zedGraphControl1.IsShowPointValues = false;
-            this.zedGraphControl1.Location = new System.Drawing.Point(3, 3);
-            this.zedGraphControl1.Name = "zedGraphControl1";
-            this.zedGraphControl1.PointValueFormat = "G";
-            this.zedGraphControl1.Size = new System.Drawing.Size(1226, 561);
-            this.zedGraphControl1.TabIndex = 0;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.dataPanel);
             this.groupBox1.Controls.Add(this.infoBox);
-            this.groupBox1.Controls.Add(this.label25);
-            this.groupBox1.Controls.Add(this.label26);
+            this.groupBox1.Controls.Add(this.maxAltitude);
+            this.groupBox1.Controls.Add(this.averageAltitude);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.label28);
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.maxPower);
+            this.groupBox1.Controls.Add(this.averagePower);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.minHeartRate);
             this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.maxHeartRate);
             this.groupBox1.Controls.Add(this.maximumSpeed);
-            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.averageHeartRate);
             this.groupBox1.Controls.Add(this.averageSpeed);
-            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.totalDistanceCovered);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
@@ -222,210 +204,99 @@
             this.groupBox1.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1226, 561);
+            this.groupBox1.Size = new System.Drawing.Size(1356, 693);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Summary";
             // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(478, 198);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(57, 18);
-            this.label25.TabIndex = 24;
-            this.label25.Text = "{ value }";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(169, 198);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(57, 18);
-            this.label26.TabIndex = 23;
-            this.label26.Text = "{ value }";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(326, 198);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(118, 18);
-            this.label27.TabIndex = 22;
-            this.label27.Text = "Maximum Altitude";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(12, 198);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(109, 18);
-            this.label28.TabIndex = 21;
-            this.label28.Text = "Average Altitude";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(478, 161);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 18);
-            this.label21.TabIndex = 20;
-            this.label21.Text = "{ value }";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(169, 161);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(57, 18);
-            this.label22.TabIndex = 19;
-            this.label22.Text = "{ value }";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(326, 161);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(107, 18);
-            this.label23.TabIndex = 18;
-            this.label23.Text = "Maximum Power";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(12, 161);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(98, 18);
-            this.label24.TabIndex = 17;
-            this.label24.Text = "Average Power";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(806, 122);
+            this.label19.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(190, 198);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 18);
-            this.label19.TabIndex = 16;
-            this.label19.Text = "{ value }";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(654, 122);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(127, 18);
-            this.label20.TabIndex = 15;
-            this.label20.Text = "Minimum Heartrate";
+            this.label19.Size = new System.Drawing.Size(0, 18);
+            this.label19.TabIndex = 35;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(478, 122);
+            this.label18.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(513, 162);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 18);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "{ value }";
+            this.label18.Size = new System.Drawing.Size(35, 18);
+            this.label18.TabIndex = 34;
+            this.label18.Text = "watt";
             // 
-            // maximumSpeed
+            // label17
             // 
-            this.maximumSpeed.AutoSize = true;
-            this.maximumSpeed.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maximumSpeed.Location = new System.Drawing.Point(478, 85);
-            this.maximumSpeed.Name = "maximumSpeed";
-            this.maximumSpeed.Size = new System.Drawing.Size(57, 18);
-            this.maximumSpeed.TabIndex = 13;
-            this.maximumSpeed.Text = "{ value }";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(204, 162);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(35, 18);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "watt";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(169, 122);
+            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(841, 122);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 18);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "{ value }";
+            this.label16.Size = new System.Drawing.Size(35, 18);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "bpm";
             // 
-            // averageSpeed
+            // label15
             // 
-            this.averageSpeed.AutoSize = true;
-            this.averageSpeed.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.averageSpeed.Location = new System.Drawing.Point(169, 85);
-            this.averageSpeed.Name = "averageSpeed";
-            this.averageSpeed.Size = new System.Drawing.Size(57, 18);
-            this.averageSpeed.TabIndex = 11;
-            this.averageSpeed.Text = "{ value }";
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(513, 122);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(35, 18);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "bpm";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(169, 44);
+            this.label14.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(204, 122);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 18);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "{ value }";
+            this.label14.Size = new System.Drawing.Size(35, 18);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "bpm";
             // 
-            // label13
+            // dataPanel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(326, 122);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(129, 18);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Maximum Heartrate";
+            this.dataPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dataPanel.Controls.Add(this.dataTable);
+            this.dataPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataPanel.Location = new System.Drawing.Point(3, 420);
+            this.dataPanel.Name = "dataPanel";
+            this.dataPanel.Size = new System.Drawing.Size(997, 270);
+            this.dataPanel.TabIndex = 29;
             // 
-            // label12
+            // dataTable
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 122);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 18);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "Average Heartrate";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(326, 85);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 18);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Maximum Speed";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(12, 85);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 18);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Average Speed";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 44);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(151, 18);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Total distance Covered ";
+            this.dataTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column7,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.dataTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataTable.Location = new System.Drawing.Point(0, 0);
+            this.dataTable.Margin = new System.Windows.Forms.Padding(0);
+            this.dataTable.Name = "dataTable";
+            this.dataTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataTable.Size = new System.Drawing.Size(997, 270);
+            this.dataTable.TabIndex = 1;
             // 
             // infoBox
             // 
@@ -433,9 +304,9 @@
             this.infoBox.Controls.Add(this.infoBoxPanel);
             this.infoBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.infoBox.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoBox.Location = new System.Drawing.Point(870, 28);
+            this.infoBox.Location = new System.Drawing.Point(1000, 28);
             this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(353, 530);
+            this.infoBox.Size = new System.Drawing.Size(353, 662);
             this.infoBox.TabIndex = 28;
             this.infoBox.TabStop = false;
             this.infoBox.Text = "{ device.name }";
@@ -473,6 +344,7 @@
             this.selectSpeedUnit.Name = "selectSpeedUnit";
             this.selectSpeedUnit.Size = new System.Drawing.Size(121, 26);
             this.selectSpeedUnit.TabIndex = 2;
+            this.selectSpeedUnit.SelectedIndexChanged += new System.EventHandler(this.selectSpeedUnit_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -624,40 +496,295 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Device Version - ";
             // 
-            // dataPanel
+            // maxAltitude
             // 
-            this.dataPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dataPanel.Controls.Add(this.dataTable);
-            this.dataPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataPanel.Location = new System.Drawing.Point(3, 288);
-            this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(867, 270);
-            this.dataPanel.TabIndex = 29;
+            this.maxAltitude.AutoSize = true;
+            this.maxAltitude.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxAltitude.Location = new System.Drawing.Point(478, 198);
+            this.maxAltitude.Name = "maxAltitude";
+            this.maxAltitude.Size = new System.Drawing.Size(15, 18);
+            this.maxAltitude.TabIndex = 24;
+            this.maxAltitude.Text = "0";
             // 
-            // dataTable
+            // averageAltitude
             // 
-            this.dataTable.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dataTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.dataTable.Location = new System.Drawing.Point(145, 29);
-            this.dataTable.Margin = new System.Windows.Forms.Padding(0);
-            this.dataTable.Name = "dataTable";
-            this.dataTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataTable.Size = new System.Drawing.Size(610, 206);
-            this.dataTable.TabIndex = 1;
+            this.averageAltitude.AutoSize = true;
+            this.averageAltitude.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageAltitude.Location = new System.Drawing.Point(169, 198);
+            this.averageAltitude.Name = "averageAltitude";
+            this.averageAltitude.Size = new System.Drawing.Size(15, 18);
+            this.averageAltitude.TabIndex = 23;
+            this.averageAltitude.Text = "0";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(326, 198);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(118, 18);
+            this.label27.TabIndex = 22;
+            this.label27.Text = "Maximum Altitude";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(12, 198);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(109, 18);
+            this.label28.TabIndex = 21;
+            this.label28.Text = "Average Altitude";
+            // 
+            // maxPower
+            // 
+            this.maxPower.AutoSize = true;
+            this.maxPower.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxPower.Location = new System.Drawing.Point(478, 161);
+            this.maxPower.Name = "maxPower";
+            this.maxPower.Size = new System.Drawing.Size(15, 18);
+            this.maxPower.TabIndex = 20;
+            this.maxPower.Text = "0";
+            // 
+            // averagePower
+            // 
+            this.averagePower.AutoSize = true;
+            this.averagePower.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averagePower.Location = new System.Drawing.Point(169, 161);
+            this.averagePower.Name = "averagePower";
+            this.averagePower.Size = new System.Drawing.Size(15, 18);
+            this.averagePower.TabIndex = 19;
+            this.averagePower.Text = "0";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(326, 161);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(107, 18);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "Maximum Power";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(12, 161);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(98, 18);
+            this.label24.TabIndex = 17;
+            this.label24.Text = "Average Power";
+            // 
+            // minHeartRate
+            // 
+            this.minHeartRate.AutoSize = true;
+            this.minHeartRate.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minHeartRate.Location = new System.Drawing.Point(806, 122);
+            this.minHeartRate.Name = "minHeartRate";
+            this.minHeartRate.Size = new System.Drawing.Size(15, 18);
+            this.minHeartRate.TabIndex = 16;
+            this.minHeartRate.Text = "0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(654, 122);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(127, 18);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "Minimum Heartrate";
+            // 
+            // maxHeartRate
+            // 
+            this.maxHeartRate.AutoSize = true;
+            this.maxHeartRate.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxHeartRate.Location = new System.Drawing.Point(478, 122);
+            this.maxHeartRate.Name = "maxHeartRate";
+            this.maxHeartRate.Size = new System.Drawing.Size(15, 18);
+            this.maxHeartRate.TabIndex = 14;
+            this.maxHeartRate.Text = "0";
+            // 
+            // maximumSpeed
+            // 
+            this.maximumSpeed.AutoSize = true;
+            this.maximumSpeed.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maximumSpeed.Location = new System.Drawing.Point(478, 85);
+            this.maximumSpeed.Name = "maximumSpeed";
+            this.maximumSpeed.Size = new System.Drawing.Size(15, 18);
+            this.maximumSpeed.TabIndex = 13;
+            this.maximumSpeed.Text = "0";
+            // 
+            // averageHeartRate
+            // 
+            this.averageHeartRate.AutoSize = true;
+            this.averageHeartRate.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageHeartRate.Location = new System.Drawing.Point(169, 122);
+            this.averageHeartRate.Name = "averageHeartRate";
+            this.averageHeartRate.Size = new System.Drawing.Size(15, 18);
+            this.averageHeartRate.TabIndex = 12;
+            this.averageHeartRate.Text = "0";
+            // 
+            // averageSpeed
+            // 
+            this.averageSpeed.AutoSize = true;
+            this.averageSpeed.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageSpeed.Location = new System.Drawing.Point(169, 85);
+            this.averageSpeed.Name = "averageSpeed";
+            this.averageSpeed.Size = new System.Drawing.Size(15, 18);
+            this.averageSpeed.TabIndex = 11;
+            this.averageSpeed.Text = "0";
+            // 
+            // totalDistanceCovered
+            // 
+            this.totalDistanceCovered.AutoSize = true;
+            this.totalDistanceCovered.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDistanceCovered.Location = new System.Drawing.Point(169, 44);
+            this.totalDistanceCovered.Name = "totalDistanceCovered";
+            this.totalDistanceCovered.Size = new System.Drawing.Size(15, 18);
+            this.totalDistanceCovered.TabIndex = 10;
+            this.totalDistanceCovered.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(326, 122);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(129, 18);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Maximum Heartrate";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(12, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(120, 18);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Average Heartrate";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(326, 85);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(107, 18);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Maximum Speed";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(12, 85);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(98, 18);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Average Speed";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(12, 44);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(151, 18);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Total distance Covered ";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.zedGraphControl1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1362, 699);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Multiple Graph";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // zedGraphControl1
+            // 
+            this.zedGraphControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.zedGraphControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zedGraphControl1.IsShowPointValues = false;
+            this.zedGraphControl1.Location = new System.Drawing.Point(3, 3);
+            this.zedGraphControl1.Name = "zedGraphControl1";
+            this.zedGraphControl1.PointValueFormat = "G";
+            this.zedGraphControl1.Size = new System.Drawing.Size(1356, 693);
+            this.zedGraphControl1.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.zedGraphControl6);
+            this.tabPage3.Controls.Add(this.zedGraphControl5);
+            this.tabPage3.Controls.Add(this.zedGraphControl4);
+            this.tabPage3.Controls.Add(this.zedGraphControl3);
+            this.tabPage3.Controls.Add(this.zedGraphControl2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1362, 699);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Single Graphs";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // zedGraphControl6
+            // 
+            this.zedGraphControl6.IsShowPointValues = false;
+            this.zedGraphControl6.Location = new System.Drawing.Point(4, 524);
+            this.zedGraphControl6.Name = "zedGraphControl6";
+            this.zedGraphControl6.PointValueFormat = "G";
+            this.zedGraphControl6.Size = new System.Drawing.Size(1352, 124);
+            this.zedGraphControl6.TabIndex = 4;
+            // 
+            // zedGraphControl5
+            // 
+            this.zedGraphControl5.IsShowPointValues = false;
+            this.zedGraphControl5.Location = new System.Drawing.Point(4, 394);
+            this.zedGraphControl5.Name = "zedGraphControl5";
+            this.zedGraphControl5.PointValueFormat = "G";
+            this.zedGraphControl5.Size = new System.Drawing.Size(1352, 124);
+            this.zedGraphControl5.TabIndex = 3;
+            // 
+            // zedGraphControl4
+            // 
+            this.zedGraphControl4.IsShowPointValues = false;
+            this.zedGraphControl4.Location = new System.Drawing.Point(4, 264);
+            this.zedGraphControl4.Name = "zedGraphControl4";
+            this.zedGraphControl4.PointValueFormat = "G";
+            this.zedGraphControl4.Size = new System.Drawing.Size(1352, 124);
+            this.zedGraphControl4.TabIndex = 2;
+            // 
+            // zedGraphControl3
+            // 
+            this.zedGraphControl3.IsShowPointValues = false;
+            this.zedGraphControl3.Location = new System.Drawing.Point(4, 134);
+            this.zedGraphControl3.Name = "zedGraphControl3";
+            this.zedGraphControl3.PointValueFormat = "G";
+            this.zedGraphControl3.Size = new System.Drawing.Size(1352, 124);
+            this.zedGraphControl3.TabIndex = 1;
+            // 
+            // zedGraphControl2
+            // 
+            this.zedGraphControl2.IsShowPointValues = false;
+            this.zedGraphControl2.Location = new System.Drawing.Point(4, 4);
+            this.zedGraphControl2.Name = "zedGraphControl2";
+            this.zedGraphControl2.PointValueFormat = "G";
+            this.zedGraphControl2.Size = new System.Drawing.Size(1352, 124);
+            this.zedGraphControl2.TabIndex = 0;
             // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle8;
             this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Heart Rates (BPM)";
+            this.Column1.HeaderText = "Heart Rate";
             this.Column1.MinimumWidth = 116;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -667,14 +794,27 @@
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle9;
             this.Column2.HeaderText = "Speed ( KM / HR )";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // Column7
+            // 
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Column7.HeaderText = "Speed (MI / HR)";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // Column3
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle11;
             this.Column3.HeaderText = "Cadence (RPM)";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -683,7 +823,9 @@
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "Altitude (M/FT)";
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Column4.HeaderText = "Altitude (M)";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -691,6 +833,8 @@
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle13;
             this.Column5.HeaderText = "Power (Watts)";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -699,80 +843,18 @@
             // Column6
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Power Balance and Pedalling Index";
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle14;
+            this.Column6.HeaderText = "PBPI";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // checkboxContainer
-            // 
-            this.checkboxContainer.Controls.Add(this.checkBox1);
-            this.checkboxContainer.Controls.Add(this.checkBox2);
-            this.checkboxContainer.Controls.Add(this.checkBox3);
-            this.checkboxContainer.Controls.Add(this.checkBox4);
-            this.checkboxContainer.Controls.Add(this.checkBox5);
-            this.checkboxContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.checkboxContainer.Location = new System.Drawing.Point(3, 540);
-            this.checkboxContainer.Name = "checkboxContainer";
-            this.checkboxContainer.Size = new System.Drawing.Size(1226, 24);
-            this.checkboxContainer.TabIndex = 1;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(57, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Speed";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(66, 3);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(78, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Heart Rate";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(150, 3);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(69, 17);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Cadence";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(225, 3);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(46, 17);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "FTP";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(277, 3);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(67, 17);
-            this.checkBox5.TabIndex = 4;
-            this.checkBox5.Text = "WORKS";
-            this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1240, 617);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -784,18 +866,17 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.dataPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
             this.infoBox.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.infoBoxPanel.ResumeLayout(false);
             this.infoBoxPanel.PerformLayout();
-            this.dataPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
-            this.checkboxContainer.ResumeLayout(false);
-            this.checkboxContainer.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -807,28 +888,26 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectHrmFile;
         private System.ComponentModel.BackgroundWorker fetchDataBackground;
-        private System.Windows.Forms.ToolStripMenuItem moreToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem graphToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label maxAltitude;
+        private System.Windows.Forms.Label averageAltitude;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label maxPower;
+        private System.Windows.Forms.Label averagePower;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label minHeartRate;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label maxHeartRate;
         private System.Windows.Forms.Label maximumSpeed;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label averageHeartRate;
         private System.Windows.Forms.Label averageSpeed;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label totalDistanceCovered;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
@@ -854,18 +933,25 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel dataPanel;
         private System.Windows.Forms.DataGridView dataTable;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TabPage tabPage3;
+        private ZedGraph.ZedGraphControl zedGraphControl6;
+        private ZedGraph.ZedGraphControl zedGraphControl5;
+        private ZedGraph.ZedGraphControl zedGraphControl4;
+        private ZedGraph.ZedGraphControl zedGraphControl3;
+        private ZedGraph.ZedGraphControl zedGraphControl2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.FlowLayoutPanel checkboxContainer;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
     }
 }
 

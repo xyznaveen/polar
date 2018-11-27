@@ -118,6 +118,7 @@ namespace HeartBeatMonitor
                         result.Add(temp);
                     }
                 }
+                MainForm.newData = true;
             }
             catch (IndexOutOfRangeException)
             {
