@@ -37,17 +37,22 @@ namespace HeartBeatMonitor
             if (!string.IsNullOrEmpty(fileName))
             {
 
-                loadHrmData(fileName);
+                // load file to view the details
+                loadHrmData(fileName, ReadContentsCallbackImpl);
+
+                // load parameters of the file
                 loadParameters(fileName);
             }
         }
 
         /// <summary>
-        /// Loads data into table from the file provided
+        /// Loads data from the specified file and callbacks the passed implementation
         /// </summary>
-        private void loadHrmData(string fileName)
+        /// <param name="fileName"></param>
+        /// <param name="impl"></param>
+        private void loadHrmData(string fileName, ReadContentsCallback impl)
         {
-            ReadContentsCallback rcc = new ReadContentsCallback(ReadContentsCallbackImpl);
+            ReadContentsCallback rcc = new ReadContentsCallback(impl);
             FileHandler tws = new FileHandler(fileName, rcc);
             Thread thread = new Thread(new ThreadStart(tws.FetchHrmData));
             thread.Start();
@@ -282,6 +287,10 @@ namespace HeartBeatMonitor
             }
         }
 
+        /// <summary>
+        /// Hide the column at specified index.
+        /// </summary>
+        /// <param name="startIndex">the column index which requires hiding.</param>
         private void HideColumns(int startIndex)
         {
             
@@ -314,6 +323,7 @@ namespace HeartBeatMonitor
             }
             else
             {
+                // only if the resulting list is greater than 0
                 if (results.Count > 0)
                 {
                     Console.WriteLine("Total number of objects are : " + dataTable.Rows.Count);
@@ -395,6 +405,9 @@ namespace HeartBeatMonitor
             }
         }
 
+        /// <summary>
+        /// Show multiple graph in a single place.
+        /// </summary>
         public void ShowGraph()
         {
 
@@ -429,12 +442,15 @@ namespace HeartBeatMonitor
             LineItem lineCurve3 = graphPane.AddCurve("Cadence", thirdPair, Color.Green, SymbolType.None);
             LineItem lineCurve4 = graphPane.AddCurve("Altitude", fourthPair, Color.Aqua, SymbolType.None);
             LineItem lineCurve5 = graphPane.AddCurve("Power", fifthPair, Color.Purple, SymbolType.None);
-
-            zedGraphControl1.AxisChange();
+            PointF centrePoint = new System.Drawing.PointF();
             zedGraphControl1.Size = new Size(500, 500);
             graphPane.Legend.Position = ZedGraph.LegendPos.Bottom;
+            zedGraphControl1.AxisChange();
         }
 
+        /// <summary>
+        /// Show first single graph.
+        /// </summary>
         public void ShowOne()
         {
             GraphPane graphPane = zedGraphControl2.GraphPane;
@@ -459,6 +475,9 @@ namespace HeartBeatMonitor
             zedGraphControl2.AxisChange();
         }
 
+        /// <summary>
+        /// Show second single graph.
+        /// </summary>
         public void ShowTwo()
         {
             GraphPane graphPane = zedGraphControl3.GraphPane;
@@ -483,6 +502,9 @@ namespace HeartBeatMonitor
             zedGraphControl3.AxisChange();
         }
 
+        /// <summary>
+        /// Show third single graph.
+        /// </summary>
         public void ShowThree()
         {
             GraphPane graphPane = zedGraphControl4.GraphPane;
@@ -507,6 +529,9 @@ namespace HeartBeatMonitor
             zedGraphControl4.AxisChange();
         }
 
+        /// <summary>
+        /// Show fourth single graph.
+        /// </summary>
         public void ShowFour()
         {
             GraphPane graphPane = zedGraphControl5.GraphPane;
@@ -531,6 +556,9 @@ namespace HeartBeatMonitor
             zedGraphControl5.AxisChange();
         }
 
+        /// <summary>
+        /// Show fifth single graph.
+        /// </summary>
         public void ShowFive()
         {
             GraphPane graphPane = zedGraphControl6.GraphPane;
@@ -555,6 +583,9 @@ namespace HeartBeatMonitor
             zedGraphControl6.AxisChange();
         }
 
+        /// <summary>
+        /// Clear previous data from the grid.
+        /// </summary>
         private void ClearGraphPane()
         {
 
@@ -585,6 +616,249 @@ namespace HeartBeatMonitor
                 totalDistanceCovered.Text = Calculator.Mile2Km(double.Parse(totalDistanceCovered.Text)).ToString();
             }
         }
-    }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string fileName = ShowOpenFileDialog();
+            label21.Text = fileName;
+
+            // load first comparison data file
+            loadHrmData(fileName, OpenOneCallbackImpl);
+        }
+
+        /// <summary>
+        /// Callback method for the first data grid of the comparison.
+        /// </summary>
+        /// <param name="results">the list of HRM data file.</param>
+        public void OpenOneCallbackImpl(List<string[]> results)
+        {
+            if (dataGridCompOne.InvokeRequired)
+            {
+                ReadContentsCallback selfCallback = new ReadContentsCallback(OpenOneCallbackImpl);
+                Invoke(selfCallback, new object[] { results });
+            }
+            else
+            {
+                if (results.Count > 0)
+                {
+                    Console.WriteLine("Total number of objects are : " + dataGridCompOne.Rows.Count);
+                    dataGridCompOne.Rows.Clear();
+                    strCmp = results;
+                    backgroundWorker1.WorkerReportsProgress = true;
+                    backgroundWorker1.RunWorkerAsync();
+                }
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker work = sender as BackgroundWorker;
+            int count = 0;
+            foreach (string[] str in strCmp)
+            {
+                work.ReportProgress(count, str);
+                ++count;
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            string[] str = e.UserState as string[];
+            dataGridCompOne.Rows.Add(str[0], Calculator.Str2Double(str[1]), Calculator.Km2Mile(Calculator.Str2Double(str[1])), str[2], str[3], str[4]);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string fileName = ShowOpenFileDialog();
+            label22.Text = fileName;
+
+            loadHrmData(fileName, OpenTwoCallbackImpl);
+        }
+
+        /// <summary>
+        /// Callback method for the second data grid of the comparison.
+        /// </summary>
+        /// <param name="results">the list of HRM data file.</param>
+        public void OpenTwoCallbackImpl(List<string[]> results)
+        {
+            if (dataGridCompOne.InvokeRequired)
+            {
+                ReadContentsCallback selfCallback = new ReadContentsCallback(OpenTwoCallbackImpl);
+                Invoke(selfCallback, new object[] { results });
+            }
+            else
+            {
+                if (results.Count > 0)
+                {
+                    Console.WriteLine("Total number of objects are : " + dataGridCompTwo.Rows.Count);
+                    dataGridCompTwo.Rows.Clear();
+                    strCmp = results;
+                    backgroundWorker2.WorkerReportsProgress = true;
+                    backgroundWorker2.RunWorkerAsync();
+                }
+            }
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker work = sender as BackgroundWorker;
+            int count = 0;
+            foreach (string[] str in strCmp)
+            {
+                work.ReportProgress(count, str);
+                ++count;
+            }
+        }
+
+        private void backgroundWorker2_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            string[] str = e.UserState as string[];
+            dataGridCompTwo.Rows.Add(str[0], Calculator.Str2Double(str[1]), Calculator.Km2Mile(Calculator.Str2Double(str[1])), str[2], str[3], str[4]);
+        }
+
+        private void dataGridCompTwo_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            // if data is not loaded or loaded only in one grid stop execution 
+            // and show a message
+            if(dataGridCompOne.RowCount < 2 || dataGridCompTwo.RowCount < 2)
+            {
+                MessageBox.Show("Two files must be loaded for comparison.\nPlease open two files and try again.", "STOP !");
+                return;
+            }
+
+            string result = CompareHrmData(dataGridCompOne, dataGridCompTwo);
+            MessageBox.Show(result, "Comparison Difference With Respect To Clicked DataGrid");
+        }
+
+        private void dataGridCompOne_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // if data is not loaded or loaded only in one grid stop execution 
+            // and show a message
+            if (dataGridCompOne.RowCount < 2 || dataGridCompTwo.RowCount < 2)
+            {
+                MessageBox.Show("Two files must be loaded for comparison.\nPlease open two files and try again.", "STOP !");
+                return;
+            }
+
+            string result = CompareHrmData(dataGridCompTwo, dataGridCompOne);
+            MessageBox.Show(result, "Comparison Difference With Respect To Clicked DataGrid");
+        }
+
+        /// <summary>
+        /// Compare and show the data of two different datagrids.
+        /// </summary>
+        /// <param name="dataGridCompOne">first data grid.</param>
+        /// <param name="dataGridCompTwo">second data grid.</param>
+        /// <returns>the compared data, the original data and the + / - difference.</returns>
+        private string CompareHrmData(DataGridView dataGridCompOne, DataGridView dataGridCompTwo)
+        {
+            // get both grids column count
+            int totalColumnsGridTwo = dataGridCompTwo.ColumnCount;
+            int totalColumnsGridOne = dataGridCompOne.ColumnCount;
+
+            // user selected row index
+            int selectedRowIndex = dataGridCompTwo.SelectedCells[0].RowIndex;
+
+            // get selected rows of both grids
+            DataGridViewRow selectedRowGridOne = dataGridCompOne.Rows[selectedRowIndex];
+            DataGridViewRow selectedRowGridTwo = dataGridCompTwo.Rows[selectedRowIndex];
+
+            // the resulting string
+            string result = "";
+
+            // column names header to show information
+            string colNames = "Hrt Rt.\tSpd(Km)\tSpd(Mi)\tCadence\tAltitude\tPower\n\n";
+
+            // store the difference between two selected rows
+            string diff = "\n";
+
+            // add header to result at first
+            result += colNames;
+
+            // provide space to the input
+            string delimiter = "\t";
+
+            for (int i = 0; i < totalColumnsGridTwo; i++)
+            {
+                string temp = Convert.ToString(selectedRowGridTwo.Cells[i].Value);
+                result += temp;
+
+                if (!string.IsNullOrEmpty(temp))
+                {
+                    // append data because there is some value
+                    result += delimiter;
+                    double num = 0.0;
+                }
+                else if (i == 0)
+                {
+                    // because the first column heading is extra large we need multiple spacing
+                    result += "\t";
+                }
+                else
+                {
+                    // extra tab is added at the end, remove it for empty column
+                    result = result.Substring(0, result.Length - delimiter.Length);
+                }
+            }
+
+            result += "\n";
+
+            for (int i = 0; i < totalColumnsGridOne; i++)
+            {
+                string temp = Convert.ToString(selectedRowGridOne.Cells[i].Value);
+                result += temp;
+
+                if (!string.IsNullOrEmpty(temp))
+                {
+                    // append data because there is some value
+                    result += delimiter;
+                }
+                else if (i == 0)
+                {
+                    // because the first column heading is extra large we need multiple spacing
+                    result += "\t";
+                }
+                else
+                {
+                    // extra tab is added at the end, remove it for empty column
+                    result = result.Substring(0, result.Length - delimiter.Length);
+                }
+            }
+
+            diff = CalculateDifference(result);
+
+            return result + diff;
+        }
+
+        /// <summary>
+        /// Calculate and return the difference of two input data grids.
+        /// </summary>
+        /// <param name="input">the actual input data of comparison data.</param>
+        /// <returns>string containing the difference of the two input grids.</returns>
+        private string CalculateDifference(string input)
+        {
+            string result = "\n\n";
+            string delimiter = "\t";
+
+            string[] arrayInputNewLine = input.Split('\n');
+
+            string[] one = arrayInputNewLine[2].Split('\t');
+            string[] two = arrayInputNewLine[3].Split('\t');
+
+            for (int i = 0; i < one.Length; i++)
+            {
+
+                double dblOne = 0.0;
+                double dblTwo = 0.0;
+                double.TryParse(one[i], out dblOne);
+                double.TryParse(two[i], out dblTwo);
+
+                result += Convert.ToString(dblOne - dblTwo);
+                result += '\t';
+            }
+
+            return result;
+        }
+    }
 }

@@ -9,7 +9,7 @@ namespace HeartBeatMonitor
     class Calculator
     {
 
-        List<string[]> dataList;
+        List<string[]> dataList = new List<string[]>();
 
         public Calculator(List<string[]> dataList)
         {
@@ -46,16 +46,22 @@ namespace HeartBeatMonitor
         {
             index = index < 0 ? 0 : index;
             double total = 0;
-            foreach (var items in dataList)
+            try
             {
-                string str = items[index];
-
-                if(str.Length > 1)
+                foreach (var items in dataList)
                 {
-                    str = str.Insert(str.Length - 1, ".");
-                }
+                    string str = items[index];
 
-                total += double.Parse(str);
+                    if (str.Length > 1)
+                    {
+                        str = str.Insert(str.Length - 1, ".");
+                    }
+
+                    total += double.Parse(str);
+                }
+            } catch(Exception ex)
+            {
+
             }
 
             return total / dataList.Count;
