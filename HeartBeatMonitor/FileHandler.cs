@@ -20,18 +20,31 @@ namespace HeartBeatMonitor
         private ReadContentsCallback callback;
         private ConfigurationLoadedCallback confCallback;
 
+        /// <summary>
+        /// Constructor with normal file reading configuration.
+        /// </summary>
+        /// <param name="fileName">the file which should be opened.</param>
+        /// <param name="callback">the callback which will be used after async loading of the file is complete</param>
         public FileHandler(string fileName, ReadContentsCallback callback)
         {
             this.fileName = fileName;
             this.callback = callback;
         }
 
+        /// <summary>
+        /// Constructor with callback for parameters reading.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="confCallback"></param>
         public FileHandler(string fileName, ConfigurationLoadedCallback confCallback)
         {
             this.fileName = fileName;
             this.confCallback = confCallback;
         }
 
+        /// <summary>
+        /// Get the parameters from the selected file.
+        /// </summary>
         public void FetchParameters()
         {
             var config = new Dictionary<string, string>();

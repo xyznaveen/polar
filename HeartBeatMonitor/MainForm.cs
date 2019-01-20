@@ -91,7 +91,8 @@ namespace HeartBeatMonitor
             dataTable.Height = dataPanel.Height;
         }
 
-        private List<string[]> strCmp;
+        private List<string[]> dataFromFile;
+        private List<string[]> dataFromFileOriginal;
         public double globMaxSpeed = 0;
         public double globAvgSpeed = 0;
         public double globTotalDistanceSpeed = 0;
@@ -157,7 +158,7 @@ namespace HeartBeatMonitor
 
             ShowOrHideColumns(Helper.IdentifySmodeType(data["SMode"]));
 
-            Calculator calc = new Calculator(strCmp);
+            Calculator calc = new Calculator(dataFromFile);
 
             double avgSpeed = Math.Round(calc.GetAverageSpeed(1), 2, MidpointRounding.AwayFromZero);
             globAvgSpeed = avgSpeed;
@@ -181,7 +182,7 @@ namespace HeartBeatMonitor
                 maximumSpeed.Text = maxSpeed.ToString();
             }
 
-            double avgPower = Calculator.Limit2Two(Calculator.GetAverage(strCmp, 4));
+            double avgPower = Calculator.Limit2Two(Calculator.GetAverage(dataFromFile, 4));
             if (averagePower.InvokeRequired)
             {
                 averagePower.BeginInvoke((MethodInvoker)delegate () { averagePower.Text = avgPower.ToString(); });
@@ -191,7 +192,7 @@ namespace HeartBeatMonitor
                 averagePower.Text = avgPower.ToString();
             }
 
-            double dblMaxPower = Calculator.GetMax(strCmp, 4);
+            double dblMaxPower = Calculator.GetMax(dataFromFile, 4);
             if (maxPower.InvokeRequired)
             {
                 maxPower.BeginInvoke((MethodInvoker)delegate () { maxPower.Text = dblMaxPower.ToString(); });
@@ -201,7 +202,7 @@ namespace HeartBeatMonitor
                 maxPower.Text = dblMaxPower.ToString();
             }
 
-            double dblAverageAltitude = Calculator.Limit2Two(Calculator.GetAverage(strCmp, 3));
+            double dblAverageAltitude = Calculator.Limit2Two(Calculator.GetAverage(dataFromFile, 3));
             if (averageAltitude.InvokeRequired)
             {
                 averageAltitude.BeginInvoke((MethodInvoker)delegate () { averageAltitude.Text = dblAverageAltitude.ToString(); });
@@ -211,7 +212,7 @@ namespace HeartBeatMonitor
                 averageAltitude.Text = dblAverageAltitude.ToString();
             }
 
-            double dblMaxAltitude = Calculator.GetMax(strCmp, 3);
+            double dblMaxAltitude = Calculator.GetMax(dataFromFile, 3);
             if (maxAltitude.InvokeRequired)
             {
                 maxAltitude.BeginInvoke((MethodInvoker)delegate () { maxAltitude.Text = dblMaxAltitude.ToString(); });
@@ -221,7 +222,7 @@ namespace HeartBeatMonitor
                 maxAltitude.Text = dblMaxAltitude.ToString();
             }
 
-            double dblMaxHeartRate = Calculator.GetMax(strCmp, 0);
+            double dblMaxHeartRate = Calculator.GetMax(dataFromFile, 0);
             if (maxHeartRate.InvokeRequired)
             {
                 maxHeartRate.BeginInvoke((MethodInvoker)delegate () { maxHeartRate.Text = dblMaxHeartRate.ToString(); });
@@ -231,7 +232,7 @@ namespace HeartBeatMonitor
                 maxHeartRate.Text = dblMaxHeartRate.ToString();
             }
 
-            double dblAverageHeartRate = Calculator.Limit2Two(Calculator.GetAverage(strCmp, 0));
+            double dblAverageHeartRate = Calculator.Limit2Two(Calculator.GetAverage(dataFromFile, 0));
             if (averageHeartRate.InvokeRequired)
             {
                 averageHeartRate.BeginInvoke((MethodInvoker)delegate () { averageHeartRate.Text = dblAverageHeartRate.ToString(); });
@@ -241,7 +242,7 @@ namespace HeartBeatMonitor
                 averageHeartRate.Text = dblAverageHeartRate.ToString();
             }
 
-            double dblMinHeartRate = Calculator.Limit2Two(Calculator.GetMin(strCmp, 0));
+            double dblMinHeartRate = Calculator.Limit2Two(Calculator.GetMin(dataFromFile, 0));
             if (minHeartRate.InvokeRequired)
             {
                 minHeartRate.BeginInvoke((MethodInvoker)delegate () { minHeartRate.Text = dblMinHeartRate.ToString(); });
@@ -251,7 +252,7 @@ namespace HeartBeatMonitor
                 minHeartRate.Text = dblMinHeartRate.ToString();
             }
 
-            double dblTotalDistanceCovered = Calculator.GetSpeed(5, strCmp.Count, Calculator.GetAverage(strCmp, 1));
+            double dblTotalDistanceCovered = Calculator.GetSpeed(5, dataFromFile.Count, Calculator.GetAverage(dataFromFile, 1));
             globTotalDistanceSpeed = dblTotalDistanceCovered;
             if (totalDistanceCovered.InvokeRequired)
             {
@@ -328,7 +329,8 @@ namespace HeartBeatMonitor
                 {
                     Console.WriteLine("Total number of objects are : " + dataTable.Rows.Count);
                     dataTable.Rows.Clear();
-                    strCmp = results;
+                    dataFromFile = results;
+                    dataFromFileOriginal = results;
                     fetchDataBackground.WorkerReportsProgress = true;
                     fetchDataBackground.RunWorkerAsync();
                 }
@@ -364,7 +366,7 @@ namespace HeartBeatMonitor
         {
             BackgroundWorker work = sender as BackgroundWorker;
             int count = 0;
-            foreach (string[] str in strCmp)
+            foreach (string[] str in dataFromFile)
             {
                 work.ReportProgress(count, str);
                 ++count;
@@ -385,12 +387,12 @@ namespace HeartBeatMonitor
 
                     break;
                 case 1:
-                    if (strCmp != null && strCmp.Count > 0) {
+                    if (dataFromFile != null && dataFromFile.Count > 0) {
                         ShowGraph();
                     }
                     break;
                 case 2:
-                    if (strCmp != null && strCmp.Count > 0)
+                    if (dataFromFile != null && dataFromFile.Count > 0)
                     {
                         ShowOne();
                         ShowTwo();
@@ -428,13 +430,13 @@ namespace HeartBeatMonitor
             PointPairList fifthPair = new PointPairList();
             PointPairList sixthPair = new PointPairList();
             
-            for (int i = 0; i < strCmp.Count; i++)
+            for (int i = 0; i < dataFromFile.Count; i++)
             {
-                firstPair.Add(i, double.Parse(strCmp[i][0]));
-                secondPair.Add(i, double.Parse(strCmp[i][1]));
-                thirdPair.Add(i, double.Parse(strCmp[i][2]));
-                fourthPair.Add(i, double.Parse(strCmp[i][3]));
-                fifthPair.Add(i, double.Parse(strCmp[i][4]));
+                firstPair.Add(i, double.Parse(dataFromFile[i][0]));
+                secondPair.Add(i, double.Parse(dataFromFile[i][1]));
+                thirdPair.Add(i, double.Parse(dataFromFile[i][2]));
+                fourthPair.Add(i, double.Parse(dataFromFile[i][3]));
+                fifthPair.Add(i, double.Parse(dataFromFile[i][4]));
             }
 
             LineItem lineCurve = graphPane.AddCurve("Heart Rate", firstPair, Color.Blue, SymbolType.None);
@@ -465,9 +467,9 @@ namespace HeartBeatMonitor
 
             PointPairList firstPair = new PointPairList();
 
-            for (int i = 0; i < strCmp.Count; i++)
+            for (int i = 0; i < dataFromFile.Count; i++)
             {
-                firstPair.Add(i, double.Parse(strCmp[i][0]));
+                firstPair.Add(i, double.Parse(dataFromFile[i][0]));
             }
 
             LineItem lineCurve = graphPane.AddCurve("Heart Rate", firstPair, Color.Pink, SymbolType.None);
@@ -492,9 +494,9 @@ namespace HeartBeatMonitor
 
             PointPairList firstPair = new PointPairList();
 
-            for (int i = 0; i < strCmp.Count; i++)
+            for (int i = 0; i < dataFromFile.Count; i++)
             {
-                firstPair.Add(i, double.Parse(strCmp[i][1]));
+                firstPair.Add(i, double.Parse(dataFromFile[i][1]));
             }
 
             LineItem lineCurve = graphPane.AddCurve("Speed", firstPair, Color.Maroon, SymbolType.None);
@@ -519,9 +521,9 @@ namespace HeartBeatMonitor
 
             PointPairList firstPair = new PointPairList();
 
-            for (int i = 0; i < strCmp.Count; i++)
+            for (int i = 0; i < dataFromFile.Count; i++)
             {
-                firstPair.Add(i, double.Parse(strCmp[i][2]));
+                firstPair.Add(i, double.Parse(dataFromFile[i][2]));
             }
 
             LineItem lineCurve = graphPane.AddCurve("Cadence", firstPair, Color.Orange, SymbolType.None);
@@ -546,9 +548,9 @@ namespace HeartBeatMonitor
 
             PointPairList firstPair = new PointPairList();
 
-            for (int i = 0; i < strCmp.Count; i++)
+            for (int i = 0; i < dataFromFile.Count; i++)
             {
-                firstPair.Add(i, double.Parse(strCmp[i][3]));
+                firstPair.Add(i, double.Parse(dataFromFile[i][3]));
             }
 
             LineItem lineCurve = graphPane.AddCurve("Altitude", firstPair, Color.Gray, SymbolType.None);
@@ -573,9 +575,9 @@ namespace HeartBeatMonitor
 
             PointPairList firstPair = new PointPairList();
 
-            for (int i = 0; i < strCmp.Count; i++)
+            for (int i = 0; i < dataFromFile.Count; i++)
             {
-                firstPair.Add(i, double.Parse(strCmp[i][4]));
+                firstPair.Add(i, double.Parse(dataFromFile[i][4]));
             }
 
             LineItem lineCurve = graphPane.AddCurve("Power", firstPair, Color.Red, SymbolType.None);
@@ -643,7 +645,7 @@ namespace HeartBeatMonitor
                 {
                     Console.WriteLine("Total number of objects are : " + dataGridCompOne.Rows.Count);
                     dataGridCompOne.Rows.Clear();
-                    strCmp = results;
+                    dataFromFile = results;
                     backgroundWorker1.WorkerReportsProgress = true;
                     backgroundWorker1.RunWorkerAsync();
                 }
@@ -654,7 +656,7 @@ namespace HeartBeatMonitor
         {
             BackgroundWorker work = sender as BackgroundWorker;
             int count = 0;
-            foreach (string[] str in strCmp)
+            foreach (string[] str in dataFromFile)
             {
                 work.ReportProgress(count, str);
                 ++count;
@@ -692,7 +694,7 @@ namespace HeartBeatMonitor
                 {
                     Console.WriteLine("Total number of objects are : " + dataGridCompTwo.Rows.Count);
                     dataGridCompTwo.Rows.Clear();
-                    strCmp = results;
+                    dataFromFile = results;
                     backgroundWorker2.WorkerReportsProgress = true;
                     backgroundWorker2.RunWorkerAsync();
                 }
@@ -703,7 +705,7 @@ namespace HeartBeatMonitor
         {
             BackgroundWorker work = sender as BackgroundWorker;
             int count = 0;
-            foreach (string[] str in strCmp)
+            foreach (string[] str in dataFromFile)
             {
                 work.ReportProgress(count, str);
                 ++count;
@@ -859,6 +861,134 @@ namespace HeartBeatMonitor
             }
 
             return result;
+        }
+
+        private void chunkDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            long chunks = 0;
+            long.TryParse(textBox.Text, out chunks);
+
+            if(chunks < 2)
+            {
+                textBox.Text = "2";
+            }
+
+            if (chunks > 7)
+            {
+                textBox.Text = "7";
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            // get the total number of chunk input
+            int numberOfChunks = 1;
+            int.TryParse(txtNumberOfChunks.Text, out numberOfChunks);
+
+            List<List<string[]>> totalData = BreakDataIntoChunks(numberOfChunks, dataFromFileOriginal);
+
+            string average = CalculateAverageOfChunks(totalData);
+
+            this.Cursor = Cursors.Arrow;
+            MessageBox.Show(average);
+        }
+
+        /// <summary>
+        /// Calculates and retruns the average of the chunked data.
+        /// </summary>
+        /// <param name="totalData">the chunk of data whose averages should be calculated.</param>
+        /// <returns></returns>
+        private string CalculateAverageOfChunks(List<List<string[]>> totalData)
+        {
+            string result = "";
+            int chunkCounter = 1;
+            int totalChunks = totalData.Count;
+
+            foreach(List<string[]> strList in totalData)
+            {
+                result += ("Average For Chunk #" + chunkCounter + "\n");
+                // heart rate, speed, cadence, altitude, power
+                double heartRate = 0;
+                double speed = 0;
+                double cadence = 0;
+                double altitude = 0;
+                double power = 0;
+                foreach (string[] strArray in strList)
+                {
+                    // calculating average now
+                    heartRate = Calculator.GetAverage(strList, 0);
+                    speed = Calculator.GetAverage(strList, 1);
+                    cadence = Calculator.GetAverage(strList, 2);
+                    altitude = Calculator.GetAverage(strList, 3);
+                    power = Calculator.GetAverage(strList, 4);
+                }
+                
+                result += "Average Heart Rate : " + heartRate + "\n";
+                result += "Average Speed : " + speed + "\n";
+                result += "Average Cadence : " + cadence + "\n";
+                result += "Average Altitude : " + altitude + "\n";
+                result += "Average Power : " + power + "\n\n\n";
+
+                // next chunk
+                chunkCounter++;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Break the passed data into specified number of chunks and return it as list of chunks.
+        /// </summary>
+        /// <param name="numberOfChunks">expected number of chunks for the data</param>
+        /// <param name="data">the actual data which requires chunking</param>
+        /// <returns></returns>
+        private List<List<string[]>> BreakDataIntoChunks(int numberOfChunks, List<string[]> data)
+        {
+            int sizeOfData = data.Count;
+            // this number of items will be placed in a chunk
+            int splitAtEvery = sizeOfData / numberOfChunks;
+
+            List<List<string[]>> comparisonData = new List<List<string[]>>();
+
+            int endAt = 0;
+
+            // iterate over number of times
+            for (int i = 0; i < numberOfChunks; i++)
+            {
+                List<string[]> temp = new List<string[]>();
+
+                // increase the amount of data to be retrieved from chunk
+                endAt = endAt + splitAtEvery;
+
+                for (int j = 0; j < endAt; j++)
+                {
+                    // get the values upto the specified index
+                    temp.Add(data[0]);
+                }
+
+                // add the value to the file
+                comparisonData.Add(temp);
+            }
+
+            return comparisonData;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection rows = dataTable.SelectedRows;
+
+            MessageBox.Show("TOtal rows selected :: " + rows.ToString());
+        }
+
+        private void dataTable_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            MessageBox.Show("Selected row index :: " + e.RowIndex);
         }
     }
 }
