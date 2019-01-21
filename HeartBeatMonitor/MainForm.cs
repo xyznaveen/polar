@@ -919,15 +919,13 @@ namespace HeartBeatMonitor
                 double cadence = 0;
                 double altitude = 0;
                 double power = 0;
-                foreach (string[] strArray in strList)
-                {
-                    // calculating average now
-                    heartRate = Calculator.GetAverage(strList, 0);
-                    speed = Calculator.GetAverage(strList, 1);
-                    cadence = Calculator.GetAverage(strList, 2);
-                    altitude = Calculator.GetAverage(strList, 3);
-                    power = Calculator.GetAverage(strList, 4);
-                }
+                
+                // calculating average now
+                heartRate = Calculator.GetAverage(strList, 0);
+                speed = Calculator.GetAverage(strList, 1);
+                cadence = Calculator.GetAverage(strList, 2);
+                altitude = Calculator.GetAverage(strList, 3);
+                power = Calculator.GetAverage(strList, 4);
                 
                 result += "Average Heart Rate : " + heartRate + "\n";
                 result += "Average Speed : " + speed + "\n";
@@ -979,16 +977,35 @@ namespace HeartBeatMonitor
             return comparisonData;
         }
 
+        private int singleChunkStartIndex = 0;
+        private int singleChunkEndIndex = 1;
+
         private void button4_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection rows = dataTable.SelectedRows;
 
-            MessageBox.Show("TOtal rows selected :: " + rows.ToString());
+            singleChunkEndIndex = singleChunkStartIndex + rows.Count - 1;
+
+            List<string[]> requiredData = new List<string[]>();
+
+            for (int dataCounter = 0; dataCounter < dataFromFileOriginal.Count; dataCounter++)
+            {
+                // get data only within specified index
+                if(dataCounter >= singleChunkStartIndex && dataCounter <= singleChunkEndIndex)
+                {
+                    requiredData.Add(dataFromFileOriginal[dataCounter]);
+                }
+            }
+            int numberOfChunks = 1; // the chunk is always 1
+            List<List<string[]>> totalData = BreakDataIntoChunks(numberOfChunks, requiredData);
+            string resultData = CalculateAverageOfChunks(totalData);
+            MessageBox.Show(resultData);
         }
 
         private void dataTable_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            MessageBox.Show("Selected row index :: " + e.RowIndex);
+            // set indexing from
+            singleChunkStartIndex = e.RowIndex;
         }
     }
 }

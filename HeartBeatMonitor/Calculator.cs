@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HeartBeatMonitor
 {
@@ -25,10 +26,10 @@ namespace HeartBeatMonitor
             return double.Parse(str);
         }
 
-        public static double GetAverage(List<string[]> dataList, int index)
+        public static double GetAverage(List<string[]> psdData, int index)
         {
             double total = 0;
-            foreach (var items in dataList)
+            foreach (var items in psdData)
             {
                 string str = items[index];
 
@@ -39,7 +40,10 @@ namespace HeartBeatMonitor
 
                 total += double.Parse(str);
             }
-            return total / dataList.Count;
+
+            total = total / psdData.Count;
+
+            return total;
         }
 
         public double GetAverageSpeed(int index)
