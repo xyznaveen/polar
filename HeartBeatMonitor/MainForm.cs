@@ -1007,5 +1007,21 @@ namespace HeartBeatMonitor
             // set indexing from
             singleChunkStartIndex = e.RowIndex;
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            double normalizedPowerValue = PowerCalc.GetNormalizedPower(dataFromFileOriginal, -1);
+
+            MessageBox.Show("Normalized power of the :: " + normalizedPowerValue);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            double ftp = PowerCalc.GetFtp(dataFromFileOriginal, -1);
+
+            string msg = String.Format("Functional Threshhold Power is {0} watts", ftp);
+
+            MessageBox.Show(msg);
+        }
     }
 }
