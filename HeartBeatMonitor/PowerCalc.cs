@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace HeartBeatMonitor
 {
-    class PowerCalc
+    public class PowerCalc
     {
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace HeartBeatMonitor
         /// </summary>
         /// <param name="fourthPowerAverage">the number whose fourth root must be calculated.</param>
         /// <returns>the fourth root of the number specified.</returns>
-        private static double GetFourthRoot(double fourthPowerAverage)
+        public static double GetFourthRoot(double fourthPowerAverage)
         {
                 return Math.Pow(fourthPowerAverage, 1.0 / 4);
         }
@@ -69,7 +69,7 @@ namespace HeartBeatMonitor
         /// </summary>
         /// <param name="rollingAverageList">the list of rolling average</param>
         /// <returns></returns>
-        private static double GetFourthPowerAverageValue(List<double> rollingAverageList)
+        public static double GetFourthPowerAverageValue(List<double> rollingAverageList)
         {
             double fourthPowerAverage = 0.0;
             for (int rollingAvgCounter = 0; rollingAvgCounter < rollingAverageList.Count; rollingAvgCounter++)
@@ -147,6 +147,22 @@ namespace HeartBeatMonitor
         public static double LimitTo2(double value)
         {
             return System.Math.Round(value, 2);
+        }
+
+        /// <summary>
+        /// Calculate TSS for the given values
+        /// </summary>
+        /// <param name="seconds">total training time in seconds</param>
+        /// <param name="np">the normalized power</param>
+        /// <param name="intf">the intensity factor</param>
+        /// <param name="ftp">the functional</param>
+        /// <returns></returns>
+        public static double GetTss(double seconds, double np, double intf, double ftp)
+        {
+            double tss = 0.0;
+
+            tss = (seconds * np * intf) / (ftp * 3600) * 100;
+            return LimitTo2(tss);
         }
 
     }
