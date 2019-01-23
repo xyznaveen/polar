@@ -333,8 +333,33 @@ namespace HeartBeatMonitor
                     dataFromFileOriginal = results;
                     fetchDataBackground.WorkerReportsProgress = true;
                     fetchDataBackground.RunWorkerAsync();
+                    
+                    // calculate np, ftp, if and tss
+                    UpdateAdvanceMetrics();
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates the GUI as per the required details
+        /// </summary>
+        private void UpdateAdvanceMetrics()
+        {
+            // calculate normalized power
+            double np = PowerCalc.GetNormalizedPower(dataFromFileOriginal, 3);
+            lblNormalizedPower.Text = Convert.ToString(np);
+
+            double ftp = PowerCalc.GetFtp(dataFromFileOriginal, 3);
+            lblFunctionalThreshhold.Text = Convert.ToString(ftp);
+
+            double intf = PowerCalc.GetIf(np, ftp);
+            lblIntensityFactor.Text = Convert.ToString(intf);
+
+            double tss = PowerCalc.GetTss(dataFromFileOriginal.Count, np, intf, ftp);
+            lblTrainingStressScore.Text = Convert.ToString(tss);
+
+            double pb = Calculator.GetAverage(dataFromFileOriginal, 4);
+            lblPowerBalance.Text = Convert.ToString(pb);
         }
 
         /// <summary>
