@@ -18,6 +18,8 @@ namespace HeartBeatMonitor
         /// <returns></returns>
         public static double GetNormalizedPower(List<string[]> dataSet, int indexOfPower)
         {
+            if (dataSet==null || dataSet.Count == 0) return 0.0;  
+
             // assume our default column index for power is 4
             // this is the data read from file
             // just the list of power can be passed here instead of list of array of strings
@@ -51,7 +53,7 @@ namespace HeartBeatMonitor
 
             normalizedPower = GetFourthRoot(fourthPowerAverage);
 
-            return normalizedPower;
+            return normalizedPower*45;
         }
 
         /// <summary>
@@ -107,6 +109,9 @@ namespace HeartBeatMonitor
         /// <returns>functional threshhold power of the provided data</returns>
         public static double GetFtp(List<string[]> dataSet, int indexOfPower)
         {
+
+            if (dataSet == null || dataSet.Count == 0) return 0.0;
+
             double result = 0.0;
             if (indexOfPower <= -1) indexOfPower = 4;
 
@@ -163,6 +168,68 @@ namespace HeartBeatMonitor
 
             tss = (seconds * np * intf) / (ftp * 3600) * 100;
             return LimitTo2(tss);
+        }
+
+        public static List<int> intervalIndexes;
+
+        /// <summary>
+        /// The method which calculates the power balance for the given data dump.
+        /// </summary>
+        /// <param name="dataSet">the set of data extracted from the source hrm files</param>
+        /// <returns>the calculated power balance value</returns>
+        public static int DetectClearInterval(List<string[]> dataSet)
+        {
+            int result = 0;
+
+            List<int> indexes = new List<int>();
+
+            bool countIt = true;
+            int speedIndex = 1;
+            for (int i = 0; i < dataSet.Count; i++)
+            {
+                if (i + 1 > dataSet.Count -1 ) break; 
+
+                string[] arrStr = dataSet[i];
+                string[] arrStrNext = dataSet[i + 1];
+
+                if (arrStr[speedIndex].Equals("0") && arrStrNext[speedIndex].Equals("0"))
+                {
+                    // set last index of zero
+                    if(countIt)
+                    {
+                        result++;
+                        countIt = false;
+                        indexes.Add(i);
+                    }
+                } else
+                {
+                    countIt = true;
+                }
+            }
+
+            PowerCalc.intervalIndexes = indexes;
+            return result;
+        }
+
+        /// <summary>
+        /// Generates the power balance value of the give array of string of data.
+        /// </summary>
+        /// <param name="dataSet">the dump values which contains the data from HRM file.</param>
+        /// <returns>the average power balance value from the file loaded.</returns>
+        public static double GetPowerBalance(List<string[]> dataSet)
+        {
+            int powerIndex = 4;
+
+            double result = 0.0;
+
+            double temp = 0.0;
+            foreach (string[] arrStr in dataSet)
+            {
+                double.TryParse(arrStr[powerIndex], out temp);
+                result += temp;
+            }
+
+            return result / dataSet.Count;
         }
 
     }

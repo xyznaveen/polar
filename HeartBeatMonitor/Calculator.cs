@@ -64,6 +64,9 @@ namespace HeartBeatMonitor
         /// <returns>the average value of the speed</returns>
         public double GetAverageSpeed(int index)
         {
+
+            if (dataList == null) return 0.0;
+
             index = index < 0 ? 0 : index;
             double total = 0;
             try

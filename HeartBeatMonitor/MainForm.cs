@@ -18,6 +18,8 @@ namespace HeartBeatMonitor
     {
         private const string OpenFileTitle = "Chose Input File";
         public static bool newData = false;
+        private Calculator calc;
+        private string chunkedData = "";
 
         public MainForm()
         {
@@ -30,18 +32,20 @@ namespace HeartBeatMonitor
             dataTable.Columns[dataTable.ColumnCount - 1].Visible = false;
         }
 
+        private string fileName = "";
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string fileName = ShowOpenFileDialog();
-            
+
+            this.fileName = fileName;
+
             if (!string.IsNullOrEmpty(fileName))
             {
 
                 // load file to view the details
                 loadHrmData(fileName, ReadContentsCallbackImpl);
-
                 // load parameters of the file
-                loadParameters(fileName);
             }
         }
 
@@ -157,8 +161,6 @@ namespace HeartBeatMonitor
             }
 
             ShowOrHideColumns(Helper.IdentifySmodeType(data["SMode"]));
-
-            Calculator calc = new Calculator(dataFromFile);
 
             double avgSpeed = Math.Round(calc.GetAverageSpeed(1), 2, MidpointRounding.AwayFromZero);
             globAvgSpeed = avgSpeed;
@@ -331,9 +333,13 @@ namespace HeartBeatMonitor
                     dataTable.Rows.Clear();
                     dataFromFile = results;
                     dataFromFileOriginal = results;
+                    calc = new Calculator(results);
                     fetchDataBackground.WorkerReportsProgress = true;
                     fetchDataBackground.RunWorkerAsync();
-                    
+
+                    // Load Parameters
+                    loadParameters(fileName);
+
                     // calculate np, ftp, if and tss
                     UpdateAdvanceMetrics();
                 }
@@ -347,10 +353,10 @@ namespace HeartBeatMonitor
         {
             // calculate normalized power
             double np = PowerCalc.GetNormalizedPower(dataFromFileOriginal, 3);
-            lblNormalizedPower.Text = Convert.ToString(np);
+            lblNormalizedPower.Text = Convert.ToString(PowerCalc.LimitTo2(np));
 
             double ftp = PowerCalc.GetFtp(dataFromFileOriginal, 3);
-            lblFunctionalThreshhold.Text = Convert.ToString(ftp);
+            lblFunctionalThreshhold.Text = Convert.ToString(PowerCalc.LimitTo2(ftp));
 
             double intf = PowerCalc.GetIf(np, ftp);
             lblIntensityFactor.Text = Convert.ToString(intf);
@@ -358,8 +364,9 @@ namespace HeartBeatMonitor
             double tss = PowerCalc.GetTss(dataFromFileOriginal.Count, np, intf, ftp);
             lblTrainingStressScore.Text = Convert.ToString(tss);
 
-            double pb = Calculator.GetAverage(dataFromFileOriginal, 4);
-            lblPowerBalance.Text = Convert.ToString(pb);
+            double pb = PowerCalc.GetPowerBalance(dataFromFileOriginal);
+            lblPowerBalance.Text = Convert.ToString(PowerCalc.LimitTo2(pb));
+
         }
 
         /// <summary>
@@ -409,7 +416,7 @@ namespace HeartBeatMonitor
             switch (e.TabPageIndex)
             {
                 case 0:
-
+                    dataFromFile = dataFromFileOriginal;
                     break;
                 case 1:
                     if (dataFromFile != null && dataFromFile.Count > 0) {
@@ -424,6 +431,11 @@ namespace HeartBeatMonitor
                         ShowThree();
                         ShowFour();
                         ShowFive();
+                    }
+                    break;
+                case 4:
+                    {
+                        textBox1.Text = chunkedData;
                     }
                     break;
                 default:
@@ -913,7 +925,7 @@ namespace HeartBeatMonitor
         {
             this.Cursor = Cursors.WaitCursor;
             // get the total number of chunk input
-            int numberOfChunks = 1;
+            int numberOfChunks = 3;
             int.TryParse(txtNumberOfChunks.Text, out numberOfChunks);
 
             List<List<string[]>> totalData = BreakDataIntoChunks(numberOfChunks, dataFromFileOriginal);
@@ -921,7 +933,8 @@ namespace HeartBeatMonitor
             string average = CalculateAverageOfChunks(totalData);
 
             this.Cursor = Cursors.Arrow;
-            MessageBox.Show(average);
+            chunkedData = average.Replace("\n", Environment.NewLine);
+            tabControl1.SelectedIndex = 4;
         }
 
         /// <summary>
@@ -1007,6 +1020,18 @@ namespace HeartBeatMonitor
 
         private void button4_Click(object sender, EventArgs e)
         {
+            List<string[]> requiredData = PrepareSelectedDataChunk();
+
+            int numberOfChunks = 1; // the chunk is always 1
+
+            List<List<string[]>> totalData = BreakDataIntoChunks(numberOfChunks, requiredData);
+            string resultData = CalculateAverageOfChunks(totalData);
+
+            MessageBox.Show(resultData);
+        }
+
+        private List<string[]> PrepareSelectedDataChunk()
+        {
             DataGridViewSelectedRowCollection rows = dataTable.SelectedRows;
 
             singleChunkEndIndex = singleChunkStartIndex + rows.Count - 1;
@@ -1016,15 +1041,13 @@ namespace HeartBeatMonitor
             for (int dataCounter = 0; dataCounter < dataFromFileOriginal.Count; dataCounter++)
             {
                 // get data only within specified index
-                if(dataCounter >= singleChunkStartIndex && dataCounter <= singleChunkEndIndex)
+                if (dataCounter >= singleChunkStartIndex && dataCounter <= singleChunkEndIndex)
                 {
                     requiredData.Add(dataFromFileOriginal[dataCounter]);
                 }
             }
-            int numberOfChunks = 1; // the chunk is always 1
-            List<List<string[]>> totalData = BreakDataIntoChunks(numberOfChunks, requiredData);
-            string resultData = CalculateAverageOfChunks(totalData);
-            MessageBox.Show(resultData);
+
+            return requiredData;
         }
 
         private void dataTable_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -1047,6 +1070,81 @@ namespace HeartBeatMonitor
             string msg = String.Format("Functional Threshhold Power is {0} watts", ftp);
 
             MessageBox.Show(msg);
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+
+            if(!IsFileLoaded())
+            {
+                MessageBox.Show("No files are loaded.");
+                return;
+            }
+
+            dataFromFile = PrepareSelectedDataChunk();
+            tabControl1.SelectedIndex = 1;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int res = PowerCalc.DetectClearInterval(dataFromFileOriginal);
+            MessageBox.Show(Convert.ToString(res));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int intervals = PowerCalc.DetectClearInterval(dataFromFileOriginal);
+
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+
+            if(!IsFileLoaded())
+            {
+                textClearInterval.Text = "To detect interval you must load a file first.";
+                return;
+            }
+            
+            int intervals = PowerCalc.DetectClearInterval(dataFromFileOriginal);
+
+            // ChunkIntoIntervals();
+
+            textClearInterval.Text = "There were " + Convert.ToString(intervals) +  " intervals during the period of cycling.";
+        }
+
+        private void ChunkIntoIntervals()
+        {
+            List<List<string[]>> chunks = new List<List<string[]>>();
+
+            int last = -1;
+            foreach (int indx in PowerCalc.intervalIndexes)
+            {
+                List<string[]> temp = new List<string[]>();
+                foreach (string[] str in dataFromFileOriginal)
+                {
+                    if(str[1].Equals("0"))
+                    {
+                        chunks.Add(temp);
+                        temp.Clear();
+                    } else
+                    {
+                        temp.Add(str);
+                    }
+                }
+            }
+
+            MessageBox.Show("Size of new chunked data " + chunks.Count);
+
+        }
+
+        private bool IsFileLoaded()
+        {
+            return dataFromFileOriginal != null && dataFromFileOriginal.Count != 0;
         }
     }
 }

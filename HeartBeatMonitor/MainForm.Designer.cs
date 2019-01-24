@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectHrmFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +56,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblPowerBalance = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.lblIntensityFactor = new System.Windows.Forms.Label();
+            this.lblTrainingStressScore = new System.Windows.Forms.Label();
+            this.lblNormalizedPower = new System.Windows.Forms.Label();
+            this.lblFunctionalThreshhold = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -142,24 +152,15 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.lblFunctionalThreshhold = new System.Windows.Forms.Label();
-            this.lblNormalizedPower = new System.Windows.Forms.Label();
-            this.lblTrainingStressScore = new System.Windows.Forms.Label();
-            this.lblIntensityFactor = new System.Windows.Forms.Label();
-            this.lblPowerBalance = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textClearInterval = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -175,7 +176,7 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompTwo)).BeginInit();
-            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -199,7 +200,7 @@
             // selectHrmFile
             // 
             this.selectHrmFile.Name = "selectHrmFile";
-            this.selectHrmFile.Size = new System.Drawing.Size(103, 22);
+            this.selectHrmFile.Size = new System.Drawing.Size(180, 22);
             this.selectHrmFile.Text = "Open";
             this.selectHrmFile.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -214,7 +215,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
@@ -282,6 +283,106 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Summary";
+            // 
+            // lblPowerBalance
+            // 
+            this.lblPowerBalance.AutoSize = true;
+            this.lblPowerBalance.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPowerBalance.Location = new System.Drawing.Point(670, 249);
+            this.lblPowerBalance.Name = "lblPowerBalance";
+            this.lblPowerBalance.Size = new System.Drawing.Size(29, 18);
+            this.lblPowerBalance.TabIndex = 45;
+            this.lblPowerBalance.Text = "0.0";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(478, 249);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(97, 18);
+            this.label32.TabIndex = 44;
+            this.label32.Text = "Power Balance";
+            // 
+            // lblIntensityFactor
+            // 
+            this.lblIntensityFactor.AutoSize = true;
+            this.lblIntensityFactor.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntensityFactor.Location = new System.Drawing.Point(204, 339);
+            this.lblIntensityFactor.Name = "lblIntensityFactor";
+            this.lblIntensityFactor.Size = new System.Drawing.Size(29, 18);
+            this.lblIntensityFactor.TabIndex = 43;
+            this.lblIntensityFactor.Text = "0.0";
+            // 
+            // lblTrainingStressScore
+            // 
+            this.lblTrainingStressScore.AutoSize = true;
+            this.lblTrainingStressScore.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrainingStressScore.Location = new System.Drawing.Point(204, 308);
+            this.lblTrainingStressScore.Name = "lblTrainingStressScore";
+            this.lblTrainingStressScore.Size = new System.Drawing.Size(29, 18);
+            this.lblTrainingStressScore.TabIndex = 42;
+            this.lblTrainingStressScore.Text = "0.0";
+            // 
+            // lblNormalizedPower
+            // 
+            this.lblNormalizedPower.AutoSize = true;
+            this.lblNormalizedPower.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNormalizedPower.Location = new System.Drawing.Point(204, 278);
+            this.lblNormalizedPower.Name = "lblNormalizedPower";
+            this.lblNormalizedPower.Size = new System.Drawing.Size(29, 18);
+            this.lblNormalizedPower.TabIndex = 41;
+            this.lblNormalizedPower.Text = "0.0";
+            // 
+            // lblFunctionalThreshhold
+            // 
+            this.lblFunctionalThreshhold.AutoSize = true;
+            this.lblFunctionalThreshhold.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFunctionalThreshhold.Location = new System.Drawing.Point(204, 249);
+            this.lblFunctionalThreshhold.Name = "lblFunctionalThreshhold";
+            this.lblFunctionalThreshhold.Size = new System.Drawing.Size(29, 18);
+            this.lblFunctionalThreshhold.TabIndex = 40;
+            this.lblFunctionalThreshhold.Text = "0.0";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(12, 339);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(105, 18);
+            this.label30.TabIndex = 39;
+            this.label30.Text = "Intensity Factor";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(12, 308);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(138, 18);
+            this.label29.TabIndex = 38;
+            this.label29.Text = "Training Stress Score";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(12, 278);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(119, 18);
+            this.label26.TabIndex = 37;
+            this.label26.Text = "Normalized Power";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(12, 249);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(147, 18);
+            this.label25.TabIndex = 36;
+            this.label25.Text = "Functional Threshhold";
             // 
             // label19
             // 
@@ -376,8 +477,8 @@
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle43;
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Heart Rate";
             this.Column1.MinimumWidth = 116;
@@ -389,8 +490,8 @@
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle44;
             this.Column2.HeaderText = "Speed ( KM / HR )";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -398,8 +499,8 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle45;
             this.Column7.HeaderText = "Speed (MI / HR)";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -408,8 +509,8 @@
             // Column3
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle46;
             this.Column3.HeaderText = "Cadence (RPM)";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -418,8 +519,8 @@
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle47;
             this.Column4.HeaderText = "Altitude (M)";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -428,8 +529,8 @@
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle48;
             this.Column5.HeaderText = "Power (Watts)";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -438,8 +539,8 @@
             // Column6
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle49;
             this.Column6.HeaderText = "PBPI";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -460,6 +561,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.textClearInterval);
+            this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.label8);
@@ -468,7 +572,7 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(7, 251);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(340, 220);
+            this.panel1.Size = new System.Drawing.Size(340, 358);
             this.panel1.TabIndex = 1;
             // 
             // button4
@@ -1057,8 +1161,8 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle50;
             this.dataGridViewTextBoxColumn8.Frozen = true;
             this.dataGridViewTextBoxColumn8.HeaderText = "Heart Rate";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 116;
@@ -1070,8 +1174,8 @@
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle51;
             this.dataGridViewTextBoxColumn9.HeaderText = "Speed ( KM / HR )";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -1079,8 +1183,8 @@
             // 
             // dataGridViewTextBoxColumn10
             // 
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridViewTextBoxColumn10.HeaderText = "Speed (MI / HR)";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
@@ -1089,8 +1193,8 @@
             // dataGridViewTextBoxColumn11
             // 
             this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle53;
             this.dataGridViewTextBoxColumn11.HeaderText = "Cadence (RPM)";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
@@ -1099,8 +1203,8 @@
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle54;
             this.dataGridViewTextBoxColumn12.HeaderText = "Altitude (M)";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
@@ -1109,8 +1213,8 @@
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle55;
             this.dataGridViewTextBoxColumn13.HeaderText = "Power (Watts)";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
@@ -1119,8 +1223,8 @@
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle56;
             this.dataGridViewTextBoxColumn14.HeaderText = "PBPI";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
@@ -1150,8 +1254,8 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle57.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle57;
             this.dataGridViewTextBoxColumn1.Frozen = true;
             this.dataGridViewTextBoxColumn1.HeaderText = "Heart Rate";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 116;
@@ -1163,8 +1267,8 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle58.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle58;
             this.dataGridViewTextBoxColumn2.HeaderText = "Speed ( KM / HR )";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -1172,8 +1276,8 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle59.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle59;
             this.dataGridViewTextBoxColumn3.HeaderText = "Speed (MI / HR)";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -1182,8 +1286,8 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle60.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle60;
             this.dataGridViewTextBoxColumn4.HeaderText = "Cadence (RPM)";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -1192,8 +1296,8 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle61.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle61;
             this.dataGridViewTextBoxColumn5.HeaderText = "Altitude (M)";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -1202,8 +1306,8 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle62.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle62;
             this.dataGridViewTextBoxColumn6.HeaderText = "Power (Watts)";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -1212,45 +1316,12 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Consolas", 8.25F);
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle63.Font = new System.Drawing.Font("Consolas", 8.25F);
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle63;
             this.dataGridViewTextBoxColumn7.HeaderText = "PBPI";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.button7);
-            this.tabPage5.Controls.Add(this.button6);
-            this.tabPage5.Controls.Add(this.button5);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1362, 699);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Advance Functionalities";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(137, 6);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(120, 23);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "Calculate FTP";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(8, 6);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(123, 23);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Calculate NP";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // openFileDialog1
             // 
@@ -1270,114 +1341,57 @@
             this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
             this.backgroundWorker2.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker2_ProgressChanged);
             // 
-            // button7
+            // tabPage6
             // 
-            this.button7.Location = new System.Drawing.Point(263, 6);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(137, 23);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Detect Interval";
-            this.button7.UseVisualStyleBackColor = true;
+            this.tabPage6.Controls.Add(this.textBox1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1362, 699);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Chunk Summary";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label25
+            // textBox1
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(12, 249);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(147, 18);
-            this.label25.TabIndex = 36;
-            this.label25.Text = "Functional Threshhold";
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(1356, 693);
+            this.textBox1.TabIndex = 0;
             // 
-            // label26
+            // button6
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(12, 278);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(119, 18);
-            this.label26.TabIndex = 37;
-            this.label26.Text = "Normalized Power";
+            this.button6.Font = new System.Drawing.Font("Trebuchet MS", 8.25F);
+            this.button6.Location = new System.Drawing.Point(13, 210);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(321, 31);
+            this.button6.TabIndex = 39;
+            this.button6.Text = "Show Selected Data Graph";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
-            // label29
+            // textClearInterval
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(12, 308);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(138, 18);
-            this.label29.TabIndex = 38;
-            this.label29.Text = "Training Stress Score";
+            this.textClearInterval.Font = new System.Drawing.Font("Trebuchet MS", 8.25F);
+            this.textClearInterval.Location = new System.Drawing.Point(13, 247);
+            this.textClearInterval.Name = "textClearInterval";
+            this.textClearInterval.ReadOnly = true;
+            this.textClearInterval.Size = new System.Drawing.Size(321, 20);
+            this.textClearInterval.TabIndex = 40;
             // 
-            // label30
+            // button5
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(12, 339);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(105, 18);
-            this.label30.TabIndex = 39;
-            this.label30.Text = "Intensity Factor";
-            // 
-            // lblFunctionalThreshhold
-            // 
-            this.lblFunctionalThreshhold.AutoSize = true;
-            this.lblFunctionalThreshhold.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFunctionalThreshhold.Location = new System.Drawing.Point(204, 249);
-            this.lblFunctionalThreshhold.Name = "lblFunctionalThreshhold";
-            this.lblFunctionalThreshhold.Size = new System.Drawing.Size(29, 18);
-            this.lblFunctionalThreshhold.TabIndex = 40;
-            this.lblFunctionalThreshhold.Text = "0.0";
-            // 
-            // lblNormalizedPower
-            // 
-            this.lblNormalizedPower.AutoSize = true;
-            this.lblNormalizedPower.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNormalizedPower.Location = new System.Drawing.Point(204, 278);
-            this.lblNormalizedPower.Name = "lblNormalizedPower";
-            this.lblNormalizedPower.Size = new System.Drawing.Size(29, 18);
-            this.lblNormalizedPower.TabIndex = 41;
-            this.lblNormalizedPower.Text = "0.0";
-            // 
-            // lblTrainingStressScore
-            // 
-            this.lblTrainingStressScore.AutoSize = true;
-            this.lblTrainingStressScore.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrainingStressScore.Location = new System.Drawing.Point(204, 308);
-            this.lblTrainingStressScore.Name = "lblTrainingStressScore";
-            this.lblTrainingStressScore.Size = new System.Drawing.Size(29, 18);
-            this.lblTrainingStressScore.TabIndex = 42;
-            this.lblTrainingStressScore.Text = "0.0";
-            // 
-            // lblIntensityFactor
-            // 
-            this.lblIntensityFactor.AutoSize = true;
-            this.lblIntensityFactor.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIntensityFactor.Location = new System.Drawing.Point(204, 339);
-            this.lblIntensityFactor.Name = "lblIntensityFactor";
-            this.lblIntensityFactor.Size = new System.Drawing.Size(29, 18);
-            this.lblIntensityFactor.TabIndex = 43;
-            this.lblIntensityFactor.Text = "0.0";
-            // 
-            // lblPowerBalance
-            // 
-            this.lblPowerBalance.AutoSize = true;
-            this.lblPowerBalance.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPowerBalance.Location = new System.Drawing.Point(670, 249);
-            this.lblPowerBalance.Name = "lblPowerBalance";
-            this.lblPowerBalance.Size = new System.Drawing.Size(29, 18);
-            this.lblPowerBalance.TabIndex = 45;
-            this.lblPowerBalance.Text = "0.0";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(478, 249);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(97, 18);
-            this.label32.TabIndex = 44;
-            this.label32.Text = "Power Balance";
+            this.button5.Font = new System.Drawing.Font("Trebuchet MS", 8.25F);
+            this.button5.Location = new System.Drawing.Point(13, 273);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(321, 31);
+            this.button5.TabIndex = 41;
+            this.button5.Text = "Detect Clear Interval For Loaded File";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // MainForm
             // 
@@ -1411,7 +1425,8 @@
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCompTwo)).EndInit();
-            this.tabPage5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1516,10 +1531,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtNumberOfChunks;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label26;
@@ -1530,6 +1541,11 @@
         private System.Windows.Forms.Label lblFunctionalThreshhold;
         private System.Windows.Forms.Label lblPowerBalance;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textClearInterval;
     }
 }
 
