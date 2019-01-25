@@ -53,7 +53,42 @@ namespace HeartBeatMonitor
 
             normalizedPower = GetFourthRoot(fourthPowerAverage);
 
-            return normalizedPower*45;
+            return normalizedPower;
+        }
+
+        public static double GetNormalizedPower(List<string[]> dataSet)
+        {
+            if (dataSet == null || dataSet.Count == 0) return 0.0;
+
+            double normalizedPower = 0.0;
+
+            // default interval of 30 second is required to calculate normalized power
+            int intervalSec = 30;
+
+            double rollingAverage = 0.0;
+
+            List<double> rollingAverageList = new List<double>();
+
+            for (int i = 0; i < dataSet.Count; i++)
+            {
+                double currentPower = AddDecimalToValue(dataSet[i][4]);
+                rollingAverage += currentPower;
+
+                if (i % intervalSec == 0)
+                {
+                    rollingAverage = rollingAverage / intervalSec; // get the average power during the interval
+                    rollingAverage = Math.Pow(rollingAverage, 4); // raise the average's power to the fourth
+                    rollingAverage *= 0.5; // multiply by the time
+                    rollingAverageList.Add(currentPower);
+                    rollingAverage = 0.0; // reset values else calculation will not be right
+                }
+            }
+
+            double fourthPowerAverage = GetFourthPowerAverageValue(rollingAverageList);
+
+            normalizedPower = GetFourthRoot(fourthPowerAverage);
+
+            return normalizedPower;
         }
 
         /// <summary>

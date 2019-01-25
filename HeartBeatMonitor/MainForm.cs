@@ -1112,33 +1112,21 @@ namespace HeartBeatMonitor
             
             int intervals = PowerCalc.DetectClearInterval(dataFromFileOriginal);
 
-            // ChunkIntoIntervals();
+            List<List<string[]>> totalData = BreakDataIntoChunks(intervals, dataFromFileOriginal);
+
+            string average = CalculateAverageOfChunks(totalData);
+
+            this.Cursor = Cursors.Arrow;
+            chunkedData = average.Replace("\n", Environment.NewLine);
+            tabControl1.SelectedIndex = 4;
 
             textClearInterval.Text = "There were " + Convert.ToString(intervals) +  " intervals during the period of cycling.";
         }
 
-        private void ChunkIntoIntervals()
+        private void ChunkIntoIntervals(int intervals)
         {
             List<List<string[]>> chunks = new List<List<string[]>>();
 
-            int last = -1;
-            foreach (int indx in PowerCalc.intervalIndexes)
-            {
-                List<string[]> temp = new List<string[]>();
-                foreach (string[] str in dataFromFileOriginal)
-                {
-                    if(str[1].Equals("0"))
-                    {
-                        chunks.Add(temp);
-                        temp.Clear();
-                    } else
-                    {
-                        temp.Add(str);
-                    }
-                }
-            }
-
-            MessageBox.Show("Size of new chunked data " + chunks.Count);
 
         }
 

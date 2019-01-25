@@ -167,5 +167,21 @@ namespace UnitTestProject1
             Assert.AreEqual(10.83, result);
         }
 
+        [TestMethod]
+        public void GetTssTest()
+        {
+            double result = HeartBeatMonitor.PowerCalc.GetTss(99,34,43,12);
+
+            Assert.AreEqual(335.04, result);
+        }
+
+        [TestMethod]
+        public void GetIfTest()
+        {
+            double result = HeartBeatMonitor.PowerCalc.GetIf(87, 23);
+
+            Assert.AreEqual(3.78, result);
+        }
+
     }
 }
